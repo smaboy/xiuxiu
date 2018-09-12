@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_blog"
+            app:actionLayout="@layout/hongdian"
+            android:title="我的博客"
+            android:icon="@drawable/talk"/>
+
+        <item
+            android:id="@+id/nav_about"
+            android:title="关于我"
+            android:icon="@drawable/look"/>
+
+        <item
+            android:id="@+id/nav_version"
+            android:title="相册"
+            android:icon="@drawable/video"/>
+
+        <item
+            android:id="@+id/nav_set"
+            android:title="空间"
+            android:icon="@drawable/me"/>
+    </group>
+
+    <item android:title="说明">
+        <menu>
+            <item
+                android:id="@+id/nav_sub1"
+                android:title="关于"
+                android:checkable="true"/>
+            <item
+                android:id="@+id/nav_sub2"
+                android:title="设置"
+                android:checkable="true"/>
+        </menu>
+    </item>
+</menu>

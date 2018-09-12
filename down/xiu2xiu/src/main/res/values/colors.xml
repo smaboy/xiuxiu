@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303f9f</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <!--本app所用颜色清单-->
+    <color name="mask_tags_1">#3F51B5</color>
+    <color name="mask_tags_2">#FF4081</color>
+
+
+    <color name="xx_black_tobar">#ee222222</color>
+    <color name="xx_write_tobar">#ffffffff</color>
+    <color name="xx_gray_tobar">#7F7F7F</color>
+</resources>

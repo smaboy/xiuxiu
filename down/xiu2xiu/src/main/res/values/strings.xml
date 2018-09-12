@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">咻咻</string>
+    <string name="title_activity_login">登录</string>
+
+    <!-- Strings related to login -->
+    <string name="et_user_name">用户名</string>
+    <string name="et_password">密码</string>
+    <string name="btn_login">登录</string>
+    <string name="btn_register">注册</string>
+    <string name="error_invalid_email">用户名已存在</string>
+    <string name="error_invalid_password">密码不能少于6位</string>
+    <string name="error_incorrect_password">密码不正确</string>
+    <string name="error_field_required">地址不能为空</string>
+
+    <!--主页四大栏目标题-->
+    <string name="main_talk">聊天</string>
+    <string name="main_look">新闻</string>
+    <string name="main_vd">看点</string>
+    <string name="main_me">我</string>
+
+</resources>

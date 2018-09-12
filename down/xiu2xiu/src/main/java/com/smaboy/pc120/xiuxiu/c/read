@@ -1,0 +1,10 @@
+  在Android中，Activity处理用户交互问题，因此可以认为Activity是控制器，Activity读取V视图层的数据（eg.读取当前EditText控件的数据），
+
+ 控制用户输入（eg.EditText控件数据的输入），并向Model发送数据请求（eg.发起网络请求等）。
+
+
+ 获取指纹命令
+
+ 1：dos命令定位到.jks文件下。
+
+ 2：输入命令：keytool -v -list -keystore keystore.jks

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <ListView
+        android:id="@+id/list_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+
+
+    <!--&lt;!&ndash; 这个是字母栏的提示 &ndash;&gt;-->
+    <!--&lt;!&ndash;下面的自定义属性都是默认的,可以不写&ndash;&gt;-->
+    <!--&lt;!&ndash;app:sidebarItemHeight 每个字母的高度&ndash;&gt;-->
+    <!--&lt;!&ndash;app:sidebarTextColor 正常状态下字母颜色&ndash;&gt;-->
+    <!--&lt;!&ndash;app:sidebarTextColorChoose 选中了的字母颜色&ndash;&gt;-->
+    <!--&lt;!&ndash;app:sidebarTextSize 正常状态字母尺寸&ndash;&gt;-->
+    <!--&lt;!&ndash;app:sidebarTextSizeChoose 选中字母尺寸&ndash;&gt;-->
+    <com.smaboy.pc120.xiuxiu.v.customerview.MyQuickSlideBarView
+        android:id="@+id/quickslidebar"
+        android:layout_width="20dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="right"
+        app:sidebarItemHeight="15dp"
+        app:sidebarTextColor="@android:color/black"
+        app:sidebarTextColorChoose="@color/colorPrimary"
+        app:sidebarTextSize="12sp"
+        app:sidebarTextSizeChoose="20sp"
+        />
+
+    <TextView
+        android:id="@+id/tv_letter"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:text="A"
+        android:textSize="30sp"
+        android:textColor="#000"
+        android:background="@drawable/user_pwd_shape_background"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:visibility="gone"/>
+
+</RelativeLayout>
