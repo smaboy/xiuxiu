@@ -6,3 +6,6 @@
 /build
 /captures
 .externalNativeBuild
+/easeui/build/
+/easeDemo/build/
+/redpacketlibrary/build/

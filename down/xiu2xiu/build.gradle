@@ -1,6 +1,16 @@
+import java.text.SimpleDateFormat
+
 apply plugin: 'com.android.application'
-apply plugin: 'org.greenrobot.greendao' // apply plugin
-//apply plugin: 'com.jakewharton.butterknife'//add plugin
+
+//初始化properties,用于后面从local.properties文件中获取数据
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+//定义一个方法，用于获取此刻事件
+def releaseTime() {
+//    return new Date().format("yyyy-MM-dd-HH-mm-ss", TimeZone.getTimeZone("UTC"))
+    return new SimpleDateFormat("yyyy-MM-dd-HHmmss").format(new Date())
+}
 
 android {
     compileSdkVersion 27
@@ -15,6 +25,22 @@ android {
         multiDexEnabled true
     }
 
+    signingConfigs {
+        release {
+            storeFile file(properties.getProperty("RELEASE_STORE_FILE"))
+            storePassword properties.getProperty("RELEASE_STORE_PASSWORD")
+            keyAlias properties.getProperty("RELEASE_KEY_ALIAS")
+            keyPassword properties.getProperty("RELEASE_KEY_PASSWORD")
+        }
+        debug {
+
+            storeFile file(properties.getProperty("DEBUG_STORE_FILE"))
+            storePassword properties.getProperty("DEBUG_STORE_PASSWORD")
+            keyAlias properties.getProperty("DEBUG_KEY_ALIAS")
+            keyPassword properties.getProperty("DEBUG_KEY_PASSWORD")
+        }
+    }
+
     //签名配置
     signingConfigs {
         config {
@@ -25,11 +51,6 @@ android {
         }
     }
 
-    //greendao的相关设置schemaVersion为版本号，targetGenDir 这个为存放路径
-    greendao{
-        schemaVersion 1
-        targetGenDir '/m'
-    }
     buildTypes {
         release {
             minifyEnabled false
@@ -37,10 +58,40 @@ android {
             signingConfig signingConfigs.config
         }
     }
-//    开启databinding
-//    dataBinding {
-//        enabled=true
-//    }
+
+    //    该方法用于，重新设置包的名称
+    applicationVariants.all { variant ->    //批量修改Apk名字
+        variant.outputs.all { output ->
+//            def outputFile=output.outputFile;
+
+            if(outputFile!=null&&outputFile.name.endsWith('.apk')){
+//                variant.buildType.isDebuggable()//该方法可以判断是否为debug模式
+                //要被替换的源字符串
+                def sourceFile = output.outputFile.name
+                //替换的字符串
+                def replaceFile = "xiuixu_${variant.buildType.name}_V${variant.versionName}_${releaseTime()}_${variant.flavorName}.apk"
+                outputFileName = output.outputFile.name.replace(sourceFile, replaceFile)
+                //遗留问题：如何获取当前module的name，如CodeBooke这个名字怎么获取到
+            }
+        }
+    }
+
+    //添加该行，用于解决All flavors must now belong to a named flavor dimension.
+    flavorDimensions "versionCode"
+    productFlavors {
+        dev {//测试
+            applicationId "com.smaboy.xiuxiu.dev"//不同的产品，不用的包名
+            versionName "1.0.1"//不同的产品，不同的版本名
+            manifestPlaceholders = [UMC:"dev"]//不同产品，不同的渠道号
+        }
+
+        pro {//生产
+
+
+        }
+    }
+
+
 }
 
 
