@@ -20,7 +20,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,6 +45,7 @@ import com.smaboy.pc120.xiuxiu.c.fragment.MeFragment;
 import com.smaboy.pc120.xiuxiu.c.fragment.SmallVDFragment;
 import com.smaboy.pc120.xiuxiu.c.fragment.TalkingFragment;
 import com.smaboy.pc120.xiuxiu.c.util.EventBusUtils;
+import com.smaboy.pc120.xiuxiu.c.util.LogUtil;
 import com.smaboy.pc120.xiuxiu.c.util.SelectPicUtil;
 import com.smaboy.pc120.xiuxiu.c.util.UIUtils;
 
@@ -399,7 +399,7 @@ public class MainActivity extends BaseFragmentActivity implements View.OnClickLi
                     public void onClick(DialogInterface dialog, int which) {
 
 
-                        Log.e("click", "hahah" + which);
+                        LogUtil.e( "hahah" + which);
                         flag[0] = which;
                     }
                 })
@@ -407,8 +407,8 @@ public class MainActivity extends BaseFragmentActivity implements View.OnClickLi
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                        Log.e("click", "确定" + which);
-                        Log.e("click", "选择图片来源时，您确定了" + flag[0]);
+                        LogUtil.e( "确定" + which);
+                        LogUtil.e( "选择图片来源时，您确定了" + flag[0]);
                         /*获取当前系统的android版本号*/
                         int currentapiVersion = Build.VERSION.SDK_INT;
                         if (flag[0] == 0) {

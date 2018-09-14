@@ -1,6 +1,7 @@
 package com.smaboy.pc120.xiuxiu.c.base;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
@@ -25,10 +26,16 @@ public class BaseFragmentActivity extends FragmentActivity {
         UIUtils.setImmersiveMenuBar(this);
 
         //将activity添加到activity管理器中
-        ActivityTaskManager.getInstance().addActivity(this.getLocalClassName(),this);
+        ActivityTaskManager.getInstance().addActivity(getClass().getSimpleName(), this);
 
 //        setContentView(R.layout.activity_base);
     }
 
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //将activity移除activity管理器
+        ActivityTaskManager.getInstance().removeActivity(getClass().getSimpleName());
+    }
 }

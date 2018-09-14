@@ -1,5 +1,6 @@
 package com.smaboy.pc120.xiuxiu.c.util;
 
+import android.annotation.SuppressLint;
 import android.os.Environment;
 import android.text.TextUtils;
 import android.util.Log;
@@ -16,8 +17,12 @@ import java.util.Formatter;
 import java.util.Locale;
 
 /**
- * Created by GaryChan on 16/5/3.
- */
+  *
+  * 类作用描述: 日志工具类
+  * 作者: smaboy
+  *
+  *
+  */
 public class LogUtil {
     public static String customTagPrefix = "";  // 自定义Tag的前缀，可以是作者名
     public static boolean isSaveLog = false;    // 是否把保存日志到SD卡中
@@ -36,6 +41,7 @@ public class LogUtil {
     public static boolean allowW = true;
     public static boolean allowWtf = true;
 
+    @SuppressLint("DefaultLocale")
     private static String generateTag(StackTraceElement caller) {
         String tag = "%s.%s(Line:%d)"; // 占位符
         String callerClazzName = caller.getClassName(); // 获取到类名

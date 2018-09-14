@@ -1,6 +1,7 @@
 package com.smaboy.pc120.xiuxiu.c.manager;
 
 import android.app.Activity;
+import android.util.AndroidException;
 import android.util.Log;
 
 import com.smaboy.pc120.xiuxiu.c.util.LogUtil;
@@ -45,7 +46,10 @@ public class ActivityTaskManager {
      * @param activity
      */
     public void addActivity(String actName, Activity activity) {
-        LogUtil.e(activity.getLocalClassName());
+
+        //打印加入activity管理器的活动
+        LogUtil.e(actName);
+
 
         // 先判断是否已经存在这个activity
         if (!activityMap.containsKey(actName)) {
@@ -98,6 +102,9 @@ public class ActivityTaskManager {
      * @param actName
      */
     public void removeActivity(String actName) {
+        //打印移除activity管理器的活动
+        LogUtil.e(actName);
+
         // 得到该Activity的实例
         Activity activity = activityMap.get(actName);
         // 如果不为null,则结束掉该activity
@@ -121,7 +128,8 @@ public class ActivityTaskManager {
             }
         }
         // 完全退出app,否则还有进程在后台
-        System.exit(0);
+        System.exit(0);//退出虚拟机
+        android.os.Process.killProcess(android.os.Process.myPid());//杀死当前进程
     }
 
 }

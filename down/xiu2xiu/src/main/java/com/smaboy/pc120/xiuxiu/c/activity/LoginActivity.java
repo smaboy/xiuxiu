@@ -13,7 +13,6 @@ import android.support.annotation.RequiresApi;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AutoCompleteTextView;
@@ -269,7 +268,7 @@ public class LoginActivity extends BaseFragmentActivity implements OnClickListen
 
 //        取得系统时间,不管是24小时还是12小时  最后都是24
         long time = System.currentTimeMillis();
-        Log.e("TAG","当前系统时间毫秒数为:"+time);
+        LogUtil.e("当前系统时间毫秒数为:"+time);
 
         String str = getDateToString(time);
         if (str != null && str != "") {
@@ -463,20 +462,17 @@ public class LoginActivity extends BaseFragmentActivity implements OnClickListen
             @Override
             public void getSuccess(Platform arg0, int arg1, HashMap<String, Object> arg2) {
 
-                Log.e("mPlatform", arg1 + "--" + arg2.toString());
 
                 parsePlatformMsg(arg0);
             }
 
             @Override
             public void getFailture(Platform arg0, int arg1, Throwable arg2) {
-                Log.e("mPlatform", arg2.toString());
             }
 
 
             @Override
             public void cancel(Platform arg0, int arg1) {
-                Log.e("mPlatform", "取消了");
             }
         };
     }
@@ -493,8 +489,7 @@ public class LoginActivity extends BaseFragmentActivity implements OnClickListen
         String userNick = "";
         String userIcon = "";
 
-        Log.e("mPlatform", "开始解析获取到的用户信息");
-        Log.e("mPlatform", platform.getName() + ":" + platform.getDb().exportData());
+        LogUtil.e( "开始解析获取到的用户信息");
 
 
 //        if(platform.getName().equals(QQ.NAME)) {
@@ -514,7 +509,7 @@ public class LoginActivity extends BaseFragmentActivity implements OnClickListen
         userNick = platform.getDb().get("nickname");
         userIcon = platform.getDb().get("icon");
 
-        Log.e("mPlatform", userId + "--" + pwd + "---" + userNick + "---" + userIcon);
+        LogUtil.e( userId + "--" + pwd + "---" + userNick + "---" + userIcon);
 
 
         //将数据传入注册
@@ -601,7 +596,7 @@ public class LoginActivity extends BaseFragmentActivity implements OnClickListen
             @Override
             public void onComplete(Platform arg0, int arg1, HashMap<String, Object> arg2) {
                 // TODO Auto-generated method stub
-                Log.e("tag", "------------" + arg2.toString());
+                LogUtil.e( "------------" + arg2.toString());
 
                 onGetPlatformListener.getSuccess(arg0, arg1, arg2);
 
@@ -629,7 +624,7 @@ public class LoginActivity extends BaseFragmentActivity implements OnClickListen
 
 // 接下来执行您要的操作
 
-        Log.e("platform", platform.getName() + ":" + platform.getDb().exportData());
+        LogUtil.e(platform.getName() + ":" + platform.getDb().exportData());
 
     }
 

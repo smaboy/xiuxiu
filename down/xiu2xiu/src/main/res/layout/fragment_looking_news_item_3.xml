@@ -3,14 +3,15 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/gray_pressed"
+    android:background="@drawable/btn_pressed_changed_shape"
     >
         <android.support.v7.widget.CardView
 
             android:id="@+id/cardview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp">
+            android:layout_margin="5dp"
+            android:background="@drawable/btn_pressed_changed_shape">
 
             <!--/**-->
             <!--* uniquekey : c48766abe7deb1a3164cb3af2650a878-->
