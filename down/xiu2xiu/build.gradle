@@ -13,12 +13,12 @@ def releaseTime() {
 }
 
 android {
-    compileSdkVersion 28
-    buildToolsVersion '28.0.2'
+    compileSdkVersion 27
+    buildToolsVersion '27.0.3'
     defaultConfig {
         applicationId "com.smaboy.pc120.xiuxiu"
         minSdkVersion 16
-        targetSdkVersion 28
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -69,7 +69,8 @@ android {
     //打release包的命令 Dev渠道
     task releaseStart(type: Exec, dependsOn: 'installDevRelease') {
         // linux
-        def adb = android.getAdbExe().toString()
+//        def adb = android.getAdbExe().toString()
+        def adb = android.getAdbExecutable().toString()
         commandLine "$adb", 'shell', 'am', 'start', '-n', 'com.smaboy.xiuxiu.dev/com.smaboy.pc120.xiuxiu.c.activity.LoginActivity'
     }
 
@@ -137,7 +138,7 @@ dependencies {
     implementation 'com.lovedise:permissiongen:0.0.6'
     //网络框架
     implementation 'com.squareup.retrofit2:retrofit:2.3.0'
-    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.11.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
     //依赖注入
     implementation 'com.jakewharton:butterknife:8.8.1'

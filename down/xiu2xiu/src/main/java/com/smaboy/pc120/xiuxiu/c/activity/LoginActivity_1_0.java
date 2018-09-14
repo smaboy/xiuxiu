@@ -4,11 +4,14 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.StyleableRes;
+import android.support.v4.media.RatingCompat;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -18,9 +21,11 @@ import android.widget.TextView;
 import com.smaboy.pc120.xiuxiu.R;
 import com.smaboy.pc120.xiuxiu.c.MessageEvent;
 import com.smaboy.pc120.xiuxiu.c.base.BaseFragmentActivity;
+import com.smaboy.pc120.xiuxiu.c.constant.UserInfoTips;
 import com.smaboy.pc120.xiuxiu.c.util.EventBusUtils;
 import com.smaboy.pc120.xiuxiu.c.util.FastBlurUtil;
 import com.smaboy.pc120.xiuxiu.c.util.LogUtil;
+import com.smaboy.pc120.xiuxiu.c.util.SPUtils;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -96,10 +101,60 @@ public class LoginActivity_1_0 extends BaseFragmentActivity {
         EventBusUtils.register(this);
 
         init();
+
+        initData();
+    }
+
+    /**
+     * 初始化数据
+     *
+     */
+    private void initData() {
+
+        //设置用户名和密码
+        lgActvUserName.setText(SPUtils.getInstance(context).getSP(UserInfoTips.USER_NAME));
+        lgEtPwd.setText(SPUtils.getInstance(context).getSP(UserInfoTips.USER_PWD));
+
+        //设置记住账号，自动登录状态
+        lgCbRememberNo.setChecked("1".equals(SPUtils.getInstance(context).getSP(UserInfoTips.USER_REMEMBER_NO)));
+        lgCbAutoLogin.setChecked("1".equals(SPUtils.getInstance(context).getSP(UserInfoTips.USER_AUTO_LOGIN)));
+
+        //登录注册切换的事件监听
+        switchLoginRegister.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(b) {//设置为没选中状态
+                    itemLogin.setVisibility(View.GONE);
+                    itemRegister.setVisibility(View.VISIBLE);
+                    switchLoginRegister.setText("注册");
+
+                }else {
+                    itemLogin.setVisibility(View.VISIBLE);
+                    itemRegister.setVisibility(View.GONE);
+                    switchLoginRegister.setText("登录");
+                }
+            }
+        });
+
     }
 
     //首次进来初始化
     private void init() {
+        //初始化布局为登录页面
+        switchLoginRegister.setChecked(false);
+        itemLogin.setVisibility(View.VISIBLE);
+        itemRegister.setVisibility(View.GONE);
+
+        //记住账号，自动登录为不选中装填
+        lgCbRememberNo.setChecked(false);
+        lgCbAutoLogin.setChecked(false);
+
+        //设置头像
+
+        //隐藏加载框
+        llProgress.setVisibility(View.GONE);
+
+
         //设置背景图片
         Date date = new Date(System.currentTimeMillis());
 //        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss");
@@ -141,14 +196,39 @@ public class LoginActivity_1_0 extends BaseFragmentActivity {
         EventBusUtils.unregister(this);
     }
 
+    //设置点击事件
     @OnClick({R.id.lg_btn_login, R.id.lg_cb_remember_no, R.id.lg_cb_auto_login, R.id.lg_qq_login, R.id.lg_weixin_login, R.id.lg_weibo_login, R.id.rg_btn_send, R.id.rg_btn_register, R.id.switch_login_register})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.lg_btn_login://登录
                 break;
             case R.id.lg_cb_remember_no://记住账号
+                if(lgCbRememberNo.isChecked()) {
+                    SPUtils.getInstance(this).putSP(UserInfoTips.USER_REMEMBER_NO,"1");//添加记住账号标识
+                    SPUtils.getInstance(this).putSP(UserInfoTips.USER_NAME,lgActvUserName.getText().toString());//保存姓名
+
+
+                }else {
+                    lgCbAutoLogin.setChecked(false);//不记住账户，自动登录也取消
+                    SPUtils.getInstance(this).removeSP(UserInfoTips.USER_AUTO_LOGIN);//移除自动登录标识
+                    SPUtils.getInstance(this).removeSP(UserInfoTips.USER_REMEMBER_NO);//移除记住账号标识
+                    SPUtils.getInstance(this).removeSP(UserInfoTips.USER_NAME);//移除姓名
+                    SPUtils.getInstance(this).removeSP(UserInfoTips.USER_PWD);//移除密码
+                }
+
                 break;
             case R.id.lg_cb_auto_login://自动登录
+                if(lgCbAutoLogin.isChecked()) {//点选中状态
+                    lgCbRememberNo.setChecked(true);//记住账号也会变为选中状态
+                    SPUtils.getInstance(this).putSP(UserInfoTips.USER_AUTO_LOGIN,"1");//添加自动登录标识
+                    SPUtils.getInstance(this).putSP(UserInfoTips.USER_REMEMBER_NO,"1");//添加记住账号标识
+                    SPUtils.getInstance(this).putSP(UserInfoTips.USER_NAME,lgActvUserName.getText().toString());//保存姓名
+                    SPUtils.getInstance(this).putSP(UserInfoTips.USER_PWD,lgEtPwd.getText().toString());//保存密码
+
+                }else {//没选中状态
+                    SPUtils.getInstance(this).removeSP(UserInfoTips.USER_AUTO_LOGIN);//移除自动登录标识
+                    SPUtils.getInstance(this).removeSP(UserInfoTips.USER_PWD);//移除密码
+                }
                 break;
             case R.id.lg_qq_login://qq登录
                 break;
@@ -161,6 +241,8 @@ public class LoginActivity_1_0 extends BaseFragmentActivity {
             case R.id.rg_btn_register://注册
                 break;
             case R.id.switch_login_register://登录注册切换按钮
+
+
                 break;
         }
     }

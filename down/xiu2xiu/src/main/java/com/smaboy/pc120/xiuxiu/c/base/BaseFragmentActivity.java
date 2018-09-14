@@ -2,6 +2,7 @@ package com.smaboy.pc120.xiuxiu.c.base;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
@@ -18,6 +19,7 @@ import com.smaboy.pc120.xiuxiu.c.util.UIUtils;
 
 public class BaseFragmentActivity extends FragmentActivity {
 
+    public Context context;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -29,6 +31,8 @@ public class BaseFragmentActivity extends FragmentActivity {
         //将activity添加到activity管理器中
         ActivityTaskManager.getInstance().addActivity(getClass().getSimpleName(), this);
 
+
+        context=this;
     }
 
 
