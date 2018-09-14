@@ -26,16 +26,24 @@ import com.smaboy.pc120.xiuxiu.c.util.EventBusUtils;
 import com.smaboy.pc120.xiuxiu.c.util.FastBlurUtil;
 import com.smaboy.pc120.xiuxiu.c.util.LogUtil;
 import com.smaboy.pc120.xiuxiu.c.util.SPUtils;
+import com.smaboy.pc120.xiuxiu.c.util.ThirdPartyLoginUtils;
+import com.smaboy.pc120.xiuxiu.m.domain.XXUser;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cn.sharesdk.framework.Platform;
+import cn.sharesdk.framework.PlatformActionListener;
+import cn.sharesdk.framework.ShareSDK;
+import cn.sharesdk.sina.weibo.SinaWeibo;
+import cn.sharesdk.tencent.qq.QQ;
 
 /**
  * 类名: LoginActivity_1_0
@@ -231,10 +239,13 @@ public class LoginActivity_1_0 extends BaseFragmentActivity {
                 }
                 break;
             case R.id.lg_qq_login://qq登录
+//                applyPlatform(QQ.NAME);
+                ThirdPartyLoginUtils.applyPlatform(QQ.NAME);
                 break;
             case R.id.lg_weixin_login://微信登录
                 break;
             case R.id.lg_weibo_login://新浪微博登录
+                ThirdPartyLoginUtils.applyPlatform(SinaWeibo.NAME);
                 break;
             case R.id.rg_btn_send://发送
                 break;
@@ -247,9 +258,18 @@ public class LoginActivity_1_0 extends BaseFragmentActivity {
         }
     }
 
+    /**
+     *
+     * Eventbus消息处理
+     * @param messageEvent
+     */
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void doEvent(MessageEvent messageEvent){
 
     }
+
+
+
+
 
 }

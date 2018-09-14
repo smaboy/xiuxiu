@@ -50,7 +50,7 @@ public class MyApplication extends MultiDexApplication {
 
 
         //配置日志
-        LogUtil.allowE=true;
+        LogUtil.allowE=false;
         LogUtil.customTagPrefix="TAG";
 
         super.onCreate();

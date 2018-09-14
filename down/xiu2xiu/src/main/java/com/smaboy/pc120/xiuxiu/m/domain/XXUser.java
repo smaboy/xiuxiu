@@ -2,6 +2,8 @@ package com.smaboy.pc120.xiuxiu.m.domain;
 
 import org.greenrobot.greendao.annotation.Property;
 
+import java.io.Serializable;
+
 /**
  * Created by Smaboy on 2017/12/20-16:44.
  * WHERE IS A WILL,THERE IS A WAY!
@@ -9,7 +11,7 @@ import org.greenrobot.greendao.annotation.Property;
  * 咻咻用户封装类
  */
 
-public class XXUser {
+public class XXUser implements Serializable {
     private String userId;
     private String userPwd;
     private String userIcon;
