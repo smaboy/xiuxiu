@@ -59,6 +59,20 @@ android {
         }
     }
 
+    //设置打包命令
+    //打debug包的命令 Dev渠道
+    task appStart(type: Exec, dependsOn: 'installDevDebug') {
+        // linux
+        def adb = android.getAdbExe().toString()
+        commandLine "$adb", 'shell', 'am', 'start', '-n', 'com.smaboy.xiuxiu.dev/com.smaboy.pc120.xiuxiu.c.activity.LoginActivity'
+    }
+    //打release包的命令 Dev渠道
+    task releaseStart(type: Exec, dependsOn: 'installDevRelease') {
+        // linux
+        def adb = android.getAdbExe().toString()
+        commandLine "$adb", 'shell', 'am', 'start', '-n', 'com.smaboy.xiuxiu.dev/com.smaboy.pc120.xiuxiu.c.activity.LoginActivity'
+    }
+
     //    该方法用于，重新设置包的名称
     applicationVariants.all { variant ->    //批量修改Apk名字
         variant.outputs.all { output ->
@@ -75,6 +89,11 @@ android {
             }
         }
     }
+
+    //这个方法，其实就是批量设置 manifestPlaceholders = [UMC:"dev"]//不同产品，不同的渠道号
+//    productFlavors.all {
+//        flavor -> flavor.manifestPlaceholders = [GRADLE_CHANNEL_VALUE: name]
+//    }
 
     //添加该行，用于解决All flavors must now belong to a named flavor dimension.
     flavorDimensions "versionCode"
