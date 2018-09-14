@@ -78,6 +78,8 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name="com.smaboy.pc120.xiuxiu.c.activity.LoginActivity_1_0">
 
         </activity>
         <activity android:name="com.smaboy.pc120.xiuxiu.c.activity.NewsDetailWeb"/>

@@ -13,12 +13,12 @@ def releaseTime() {
 }
 
 android {
-    compileSdkVersion 27
-    buildToolsVersion '27.0.3'
+    compileSdkVersion 28
+    buildToolsVersion '28.0.2'
     defaultConfig {
         applicationId "com.smaboy.pc120.xiuxiu"
         minSdkVersion 16
-        targetSdkVersion 27
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -63,7 +63,7 @@ android {
     //打debug包的命令 Dev渠道
     task appStart(type: Exec, dependsOn: 'installDevDebug') {
         // linux
-        def adb = android.getAdbExe().toString()
+        def adb = android.getAdbExecutable().toString()
         commandLine "$adb", 'shell', 'am', 'start', '-n', 'com.smaboy.xiuxiu.dev/com.smaboy.pc120.xiuxiu.c.activity.LoginActivity'
     }
     //打release包的命令 Dev渠道

@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentActivity;
 
 import com.smaboy.pc120.xiuxiu.R;
 import com.smaboy.pc120.xiuxiu.c.manager.ActivityTaskManager;
+import com.smaboy.pc120.xiuxiu.c.util.EventBusUtils;
 import com.smaboy.pc120.xiuxiu.c.util.UIUtils;
 
 /**
@@ -28,7 +29,6 @@ public class BaseFragmentActivity extends FragmentActivity {
         //将activity添加到activity管理器中
         ActivityTaskManager.getInstance().addActivity(getClass().getSimpleName(), this);
 
-//        setContentView(R.layout.activity_base);
     }
 
 
@@ -37,5 +37,6 @@ public class BaseFragmentActivity extends FragmentActivity {
         super.onDestroy();
         //将activity移除activity管理器
         ActivityTaskManager.getInstance().removeActivity(getClass().getSimpleName());
+
     }
 }

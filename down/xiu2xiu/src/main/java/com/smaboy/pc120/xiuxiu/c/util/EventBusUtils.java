@@ -1,6 +1,5 @@
 package com.smaboy.pc120.xiuxiu.c.util;
 
-import android.util.Log;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -14,7 +13,6 @@ import org.greenrobot.eventbus.EventBus;
  * WHERE IS A WILL,THERE IS A WAY!
  */
 public class EventBusUtils {
-    private static final String TAG = "EventBusUtils";
     private EventBusUtils() {
     }
 
@@ -25,10 +23,10 @@ public class EventBusUtils {
      */
     public static void register(Object subscriber) {
         if (!EventBus.getDefault().isRegistered(subscriber)) {
-            Log.e(TAG, "register: 注册成功");
+            LogUtil.e("register: 注册成功");
             EventBus.getDefault().register(subscriber);
         } else {
-            Log.e(TAG, "register: 注册失败");
+            LogUtil.e( "register: 注册失败");
         }
     }
 

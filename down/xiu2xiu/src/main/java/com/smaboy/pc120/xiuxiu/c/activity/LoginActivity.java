@@ -33,6 +33,7 @@ import com.smaboy.pc120.xiuxiu.R;
 import com.smaboy.pc120.xiuxiu.c.base.BaseFragmentActivity;
 import com.smaboy.pc120.xiuxiu.c.interfaces.OnGetPlatformListener;
 import com.smaboy.pc120.xiuxiu.c.util.AlertDialogUtils;
+import com.smaboy.pc120.xiuxiu.c.util.EventBusUtils;
 import com.smaboy.pc120.xiuxiu.c.util.FastBlurUtil;
 import com.smaboy.pc120.xiuxiu.c.util.LogUtil;
 import com.smaboy.pc120.xiuxiu.m.domain.XXUser;
@@ -126,6 +127,7 @@ public class LoginActivity extends BaseFragmentActivity implements OnClickListen
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_login);
+
 
 //        初始化
         initView();
@@ -690,6 +692,7 @@ public class LoginActivity extends BaseFragmentActivity implements OnClickListen
     @Override
     protected void onDestroy() {
         super.onDestroy();
+
 
         //注销短信监听回调接口
         SMSSDK.unregisterEventHandler(smsEventHandler);
