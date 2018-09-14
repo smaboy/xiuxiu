@@ -3,13 +3,8 @@ package com.smaboy.pc120.xiuxiu.c.util;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Toast;
 
-import com.hyphenate.EMCallBack;
-import com.hyphenate.chat.EMClient;
-import com.hyphenate.exceptions.HyphenateException;
 import com.smaboy.pc120.xiuxiu.R;
-import com.smaboy.pc120.xiuxiu.m.domain.XXUser;
 
 import java.util.HashMap;
 
@@ -17,9 +12,6 @@ import cn.sharesdk.framework.Platform;
 import cn.sharesdk.framework.PlatformActionListener;
 import cn.sharesdk.framework.ShareSDK;
 import cn.sharesdk.onekeyshare.OnekeyShare;
-import cn.sharesdk.sina.weibo.SinaWeibo;
-import cn.sharesdk.tencent.qq.QQ;
-import cn.sharesdk.wechat.friends.Wechat;
 
 /**
  * Created by Smaboy on 2017/12/11-21:47.
@@ -77,7 +69,7 @@ public class ShareLoginUtils {
      *
      * @param otherLogin
      */
-    private static void loginByOthers( Platform otherLogin) {
+    private static void loginByOthers(Platform otherLogin) {
 
 
         otherLogin.SSOSetting(false);  //设置false表示使用SSO授权方式,有客户端优先调用
@@ -118,64 +110,6 @@ public class ShareLoginUtils {
 // 接下来执行您要的操作
 
 
-    }
-
-
-
-    /**
-     * 登录环信服务器
-     *
-     * @param userId
-     * @param password
-     */
-    public static void loginHX(String userId, String password , final Context context) {
-        //登录环信服务器
-        EMClient.getInstance().login(userId,password,new EMCallBack() {//回调
-            @Override
-            public void onSuccess() {
-                EMClient.getInstance().groupManager().loadAllGroups();
-                EMClient.getInstance().chatManager().loadAllConversations();
-                Log.d("main", "登录聊天服务器成功！");
-            }
-
-            @Override
-            public void onProgress(int progress, String status) {
-
-            }
-
-            @Override
-            public void onError(int code, String message) {
-                if(code==204) {//用户不存在
-                    //使用第三方登录或前往注册页面
-                    Toast.makeText(context, "用户不存在", Toast.LENGTH_SHORT).show();
-                }
-                if(code==202) {//用户id或密码错误
-                    Toast.makeText(context, "用户id或密码错误", Toast.LENGTH_SHORT).show();
-                }
-                
-            }
-        });
-    }
-
-
-    /**
-     * 注册环信服务器
-     * @param userId
-     * @param password
-     * @return 错误码,0 表示无错误，注册成功
-     */
-    public static int registerHX(String userId, String password) {
-        //注册失败会抛出HyphenateException
-        try {
-            EMClient.getInstance().createAccount(userId, userId);//同步方法
-        } catch (HyphenateException e) {
-            e.printStackTrace();
-            LogUtil.e(e.toString());
-
-            return e.getErrorCode();
-        }
-
-        return 0;
     }
 
 

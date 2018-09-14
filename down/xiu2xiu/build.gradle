@@ -147,7 +147,6 @@ dependencies {
     implementation 'com.android.support:multidex:1.0.3'
     //数据库框架
     implementation 'org.greenrobot:greendao:3.2.2'
-    implementation project(':easeui')
     //分享
     implementation files('libs/MobCommons-2017.1201.1507.jar')
     implementation files('libs/MobTools-2017.1201.1507.jar')

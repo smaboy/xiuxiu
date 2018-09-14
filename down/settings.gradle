@@ -1,1 +1,1 @@
-include ':xiu2xiu', ':easeui', ':easeDemo', ':redpacketlibrary'
+include ':xiu2xiu'

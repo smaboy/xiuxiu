@@ -313,7 +313,6 @@ public class LoginActivity extends BaseFragmentActivity implements OnClickListen
     public void onClick(View v) {
 
         TextView tv = new TextView(getApplicationContext());
-        tv.setBackground(getResources().getDrawable(R.color.btn_blue_normal));
         switch (v.getId()) {
             case R.id.switch_login_register:
                 if (switch_login_register.isChecked()) {

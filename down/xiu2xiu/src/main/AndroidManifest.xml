@@ -1,66 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     package="com.smaboy.pc120.xiuxiu">
-
-    <!-- To auto-complete the email text field in the login form with the user's emails -->
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-    <uses-permission android:name="android.permission.READ_PROFILE" />
-    <uses-permission android:name="android.permission.READ_CONTACTS" />
-
-    <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"
-        tools:ignore="ProtectedPermissions" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.GET_TASKS" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
-    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
-    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
-    <uses-permission android:name="android.permission.WRITE_SETTINGS"
-        tools:ignore="ProtectedPermissions" />
-    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
-    <!-- 声明读取联系人的权限 -->
-    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <!--shareSDK需要的权限-->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-    <!-- 蓝牙分享所需的权限 -->
-    <uses-permission android:name="android.permission.BLUETOOTH" />
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+
+    <!--短信注册需要的关键权限-->
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.MEDIA_CONTENT_CONTROL"
-        tools:ignore="ProtectedPermissions" />
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
-    //短信注册需要的关键权限
-    <uses-permission android:name="android.permission.RECEIVE_SMS" />
-    <uses-permission android:name="android.permission.READ_SMS" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-
-    <permission
-        android:name="com.hyphenate.chatuidemo.permission.MIPUSH_RECEIVE"
-        android:protectionLevel="signatureOrSystem" />
-
-    <uses-permission android:name="com.hyphenate.chatuidemo.permission.MIPUSH_RECEIVE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name="com.smaboy.pc120.xiuxiu.MyApplication"
@@ -72,8 +23,7 @@
         <activity android:name="com.smaboy.pc120.xiuxiu.c.activity.MainActivity">
 
         </activity>
-        <activity android:name="com.smaboy.pc120.xiuxiu.c.activity.LoginActivity">
-        </activity>
+        <activity android:name="com.smaboy.pc120.xiuxiu.c.activity.LoginActivity"/>
         <activity android:name="com.smaboy.pc120.xiuxiu.c.activity.LoginActivity_1_0">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -81,14 +31,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.smaboy.pc120.xiuxiu.c.activity.NewsDetailWeb"/>
+        <activity android:name="com.smaboy.pc120.xiuxiu.c.activity.NewsDetailWeb" />
 
 
+        <!-->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>开始设置集成环信相关的内容<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<-->
         <!-- 设置环信应用的appkey -->
         <meta-data
             android:name="EASEMOB_APPKEY"
             android:value="1115161020178363#xiuxiu" />
 
+
+
+        <!-->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>开始设置分享相关的内容<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<-->
         <!-- ShareSDK的activity -->
         <activity
             android:name="com.mob.tools.MobUIShell"
@@ -97,9 +51,9 @@
             android:windowSoftInputMode="stateHidden|adjustResize">
 
 
-          <!--AuthorizeAdapter继承自cn.sharesdk.framework. authorize.AuthorizeAdapter，-->
-          <!--可以监听到页面的生命周期，也能获取页面的各种UI控件。开发者可以通过继承AuthorizeAdapter，重写其方法，-->
-          <!--并获取各种UI来自定义这个页面的行为。-->
+            <!--AuthorizeAdapter继承自cn.sharesdk.framework. authorize.AuthorizeAdapter，-->
+            <!--可以监听到页面的生命周期，也能获取页面的各种UI控件。开发者可以通过继承AuthorizeAdapter，重写其方法，-->
+            <!--并获取各种UI来自定义这个页面的行为。-->
             <meta-data
                 android:name="AuthorizeAdapter"
                 android:value="com.smaboy.pc120.xiuxiu.c.adapter.MyPlatformAdapter" />
@@ -145,12 +99,6 @@
             </intent-filter>
         </activity>
         <!--QQ分享必须配置上面的activity tencent后面的appid改成你自己的QQ的appid即可-->
-
-        <!--<activity-->
-        <!--android:name="com.mob.tools.MobUIShell"-->
-        <!--android:theme="@android:style/Theme.Translucent.NoTitleBar"-->
-        <!--android:configChanges="keyboardHidden|orientation|screenSize"-->
-        <!--android:windowSoftInputMode="stateHidden|adjustResize"/>-->
 
 
     </application>

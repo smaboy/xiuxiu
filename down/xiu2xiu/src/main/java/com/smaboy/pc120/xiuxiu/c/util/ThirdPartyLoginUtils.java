@@ -1,7 +1,5 @@
 package com.smaboy.pc120.xiuxiu.c.util;
 
-import com.hyphenate.chat.EMClient;
-import com.hyphenate.exceptions.HyphenateException;
 import com.smaboy.pc120.xiuxiu.m.domain.XXUser;
 
 import java.util.HashMap;
@@ -84,18 +82,18 @@ public class ThirdPartyLoginUtils {
      */
     private static void registerHX(final XXUser xxUser) {
         //注册失败会抛出HyphenateException
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    LogUtil.e("第三方登录时用户id:"+xxUser.getUserId()+"/n"+"转为小写:"+xxUser.getUserId().toLowerCase());
-                    EMClient.getInstance().createAccount(xxUser.getUserId(), xxUser.getUserPwd());//同步方法
-                } catch (HyphenateException e) {
-                    e.printStackTrace();
-                    LogUtil.e("注册失败");
-                }
-            }
-        }).start();
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                try {
+//                    LogUtil.e("第三方登录时用户id:"+xxUser.getUserId()+"/n"+"转为小写:"+xxUser.getUserId().toLowerCase());
+//                    EMClient.getInstance().createAccount(xxUser.getUserId(), xxUser.getUserPwd());//同步方法
+//                } catch (HyphenateException e) {
+//                    e.printStackTrace();
+//                    LogUtil.e("注册失败");
+//                }
+//            }
+//        }).start();
 
 
     }

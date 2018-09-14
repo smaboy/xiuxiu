@@ -2,17 +2,17 @@ package com.smaboy.pc120.xiuxiu.c.fragment.talking;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.hyphenate.easeui.ui.EaseConversationListFragment;
 
 /**
  * Created by Smoboy on 2017/8/7.
  */
 
-public class TalkingMessageFragment extends EaseConversationListFragment {
+public class TalkingMessageFragment extends Fragment {
 
 
     @Override
@@ -34,15 +34,4 @@ public class TalkingMessageFragment extends EaseConversationListFragment {
     }
 
 
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        hideTitleBar();
-        hideSearchBar();
-    }
-
-    @Override
-    protected void initView() {
-        super.initView();
-    }
 }
