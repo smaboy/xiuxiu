@@ -1,10 +1,12 @@
 package com.smaboy.pc120.xiuxiu.c.base;
 
-import android.content.Context;
+import android.annotation.SuppressLint;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
-import android.util.AttributeSet;
-import android.view.View;
 
+import com.smaboy.pc120.xiuxiu.R;
+import com.smaboy.pc120.xiuxiu.c.manager.ActivityTaskManager;
 import com.smaboy.pc120.xiuxiu.c.util.UIUtils;
 
 /**
@@ -14,16 +16,19 @@ import com.smaboy.pc120.xiuxiu.c.util.UIUtils;
 
 public class BaseFragmentActivity extends FragmentActivity {
 
+
     @Override
-    public View onCreateView(String name, Context context, AttributeSet attrs) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        //设置沉浸式菜单栏
         UIUtils.setImmersiveMenuBar(this);
 
+        //将activity添加到activity管理器中
+        ActivityTaskManager.getInstance().addActivity(this.getLocalClassName(),this);
 
-        return super.onCreateView(name, context, attrs);
-
-
+//        setContentView(R.layout.activity_base);
     }
-
 
 
 }

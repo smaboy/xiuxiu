@@ -1,25 +1,19 @@
 package com.smaboy.pc120.xiuxiu.c.activity;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.MainThread;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.smaboy.pc120.xiuxiu.R;
-import com.smaboy.pc120.xiuxiu.c.base.BaseActivity;
+import com.smaboy.pc120.xiuxiu.c.base.BaseFragmentActivity;
 import com.smaboy.pc120.xiuxiu.c.util.UIUtils;
 
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -31,7 +25,7 @@ import cn.carbs.android.avatarimageview.library.AvatarImageView;
  * WHERE IS A WILL,THERE IS A WAY!
  */
 @SuppressLint("Registered")
-public class NewsDetailWeb extends BaseActivity {
+public class NewsDetailWeb extends BaseFragmentActivity {
 
     @BindView(R.id.user_head)
     AvatarImageView userHead;

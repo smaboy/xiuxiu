@@ -96,9 +96,6 @@ public class MainActivity extends BaseFragmentActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
 
         mContext = this;
-        //设置沉浸式菜单栏
-        UIUtils.setImmersiveMenuBar(this);
-
         //去除标题栏
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 

@@ -9,6 +9,7 @@ import android.support.multidex.MultiDexApplication;
 import com.hyphenate.chat.EMOptions;
 import com.hyphenate.easeui.EaseUI;
 import com.mob.MobSDK;
+import com.smaboy.pc120.xiuxiu.c.util.LogUtil;
 
 /**
  * Created by Smoboy on 2017/7/27.
@@ -46,6 +47,11 @@ public class MyApplication extends MultiDexApplication {
             StrictMode.VmPolicy.Builder build = new StrictMode.VmPolicy.Builder();
             StrictMode.setVmPolicy(build.build());
         }
+
+
+        //配置日志
+        LogUtil.allowE=true;
+        LogUtil.customTagPrefix="TAG";
 
         super.onCreate();
     }
