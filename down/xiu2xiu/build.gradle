@@ -19,8 +19,6 @@ android {
         applicationId "com.smaboy.pc120.xiuxiu"
         minSdkVersion 16
         targetSdkVersion 27
-        versionCode 1
-        versionName "1.0.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }
@@ -55,14 +53,14 @@ android {
     task appStart(type: Exec, dependsOn: 'installDevDebug') {
         // linux
         def adb = android.getAdbExecutable().toString()
-        commandLine "$adb", 'shell', 'am', 'start', '-n', 'com.smaboy.xiuxiu.dev/com.smaboy.pc120.xiuxiu.c.activity.LoginActivity'
+        commandLine "$adb", 'shell', 'am', 'start', '-n', 'com.smaboy.xiuxiu.dev/com.smaboy.pc120.xiuxiu.c.activity.SplashActivity'
     }
     //打release包的命令 Dev渠道
     task releaseStart(type: Exec, dependsOn: 'installDevRelease') {
         // linux
 //        def adb = android.getAdbExe().toString()
         def adb = android.getAdbExecutable().toString()
-        commandLine "$adb", 'shell', 'am', 'start', '-n', 'com.smaboy.xiuxiu.dev/com.smaboy.pc120.xiuxiu.c.activity.LoginActivity'
+        commandLine "$adb", 'shell', 'am', 'start', '-n', 'com.smaboy.xiuxiu.dev/com.smaboy.pc120.xiuxiu.c.activity.SplashActivity'
     }
 
     //    该方法用于，重新设置包的名称
@@ -92,7 +90,8 @@ android {
     productFlavors {
         dev {//测试
             applicationId "com.smaboy.xiuxiu.dev"//不同的产品，不用的包名
-            versionName "1.0.1"//不同的产品，不同的版本名
+            versionCode 1
+            versionName "1.0.2"//不同的产品，不同的版本名
             manifestPlaceholders = [UMC: "dev"]//不同产品，不同的渠道号
         }
 

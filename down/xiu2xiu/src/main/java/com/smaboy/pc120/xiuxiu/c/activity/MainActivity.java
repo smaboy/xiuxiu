@@ -552,78 +552,78 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     private void addLayout(int layout_id) {
 
-        //防止事务多次新建
-        if (fragmentManager == null) {
-            fragmentManager = getSupportFragmentManager();
-        }
-        FragmentTransaction ft = fragmentManager.beginTransaction();
-
-        //遍历隐藏布局
-        List<Fragment> fragments = fragmentManager.getFragments();
-        for (Fragment fragment : fragments) {
-
-            ft.hide(fragment);
-        }
-
-        switch (layout_id) {
-
-
-            case 1:
-
-
-                TalkingFragment talkingFragment = (TalkingFragment) fragmentManager.findFragmentByTag(Integer.toString(layout_id));
-
-                if (talkingFragment == null) {
-
-                    ft.add(R.id.content, new TalkingFragment(mContext), Integer.toString(layout_id));
-                } else {
-
-                    ft.show(talkingFragment);
-                }
-                ft.commit();
-
-                break;
-            case 2:
-                LookingFragment lookingFragment = (LookingFragment) getSupportFragmentManager().findFragmentByTag(Integer.toString(layout_id));
-
-                if (lookingFragment == null) {
-
-                    ft.add(R.id.content, new LookingFragment(mContext), Integer.toString(layout_id));
-                } else {
-
-                    ft.show(lookingFragment);
-                }
-                ft.commit();
-                break;
-            case 3:
-                SmallVDFragment smallVDFragment = (SmallVDFragment) getSupportFragmentManager().findFragmentByTag(Integer.toString(layout_id));
-
-                if (smallVDFragment == null) {
-
-                    ft.add(R.id.content, new SmallVDFragment(mContext), Integer.toString(layout_id));
-                } else {
-
-                    ft.show(smallVDFragment);
-                }
-                ft.commit();
-                break;
-            case 4:
-
-                MeFragment meFragment = (MeFragment) getSupportFragmentManager().findFragmentByTag(Integer.toString(layout_id));
-
-                if (meFragment == null) {
-
-                    ft.add(R.id.content, new MeFragment(), Integer.toString(layout_id));
-                } else {
-
-                    ft.show(meFragment);
-                }
-                ft.commit();
-                break;
-
-            default:
-                break;
-        }
+//        //防止事务多次新建
+//        if (fragmentManager == null) {
+//            fragmentManager = getSupportFragmentManager();
+//        }
+//        FragmentTransaction ft = fragmentManager.beginTransaction();
+//
+//        //遍历隐藏布局
+//        List<Fragment> fragments = fragmentManager.getFragments();
+//        for (Fragment fragment : fragments) {
+//
+//            ft.hide(fragment);
+//        }
+//
+//        switch (layout_id) {
+//
+//
+//            case 1:
+//
+//
+//                TalkingFragment talkingFragment = (TalkingFragment) fragmentManager.findFragmentByTag(Integer.toString(layout_id));
+//
+//                if (talkingFragment == null) {
+//
+//                    ft.add(R.id.content, new TalkingFragment(mContext), Integer.toString(layout_id));
+//                } else {
+//
+//                    ft.show(talkingFragment);
+//                }
+//                ft.commit();
+//
+//                break;
+//            case 2:
+//                LookingFragment lookingFragment = (LookingFragment) getSupportFragmentManager().findFragmentByTag(Integer.toString(layout_id));
+//
+//                if (lookingFragment == null) {
+//
+//                    ft.add(R.id.content, new LookingFragment(mContext), Integer.toString(layout_id));
+//                } else {
+//
+//                    ft.show(lookingFragment);
+//                }
+//                ft.commit();
+//                break;
+//            case 3:
+//                SmallVDFragment smallVDFragment = (SmallVDFragment) getSupportFragmentManager().findFragmentByTag(Integer.toString(layout_id));
+//
+//                if (smallVDFragment == null) {
+//
+//                    ft.add(R.id.content, new SmallVDFragment(mContext), Integer.toString(layout_id));
+//                } else {
+//
+//                    ft.show(smallVDFragment);
+//                }
+//                ft.commit();
+//                break;
+//            case 4:
+//
+//                MeFragment meFragment = (MeFragment) getSupportFragmentManager().findFragmentByTag(Integer.toString(layout_id));
+//
+//                if (meFragment == null) {
+//
+//                    ft.add(R.id.content, new MeFragment(), Integer.toString(layout_id));
+//                } else {
+//
+//                    ft.show(meFragment);
+//                }
+//                ft.commit();
+//                break;
+//
+//            default:
+//                break;
+//        }
 
 
     }

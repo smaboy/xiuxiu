@@ -20,10 +20,6 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.smaboy.pc120.xiuxiu.c.activity.MainActivity">
-
-        </activity>
-        <activity android:name="com.smaboy.pc120.xiuxiu.c.activity.LoginActivity"/>
         <activity android:name="com.smaboy.pc120.xiuxiu.c.activity.LoginActivity_1_0"
 
             >
@@ -38,7 +34,6 @@
             </intent-filter>
 
         </activity>
-        <activity android:name="com.smaboy.pc120.xiuxiu.c.activity.NewsDetailWeb" />
 
 
         <!-->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>开始设置集成环信相关的内容<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<-->
