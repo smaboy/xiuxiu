@@ -24,7 +24,7 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }
-
+//签名配置
     signingConfigs {
         release {
             storeFile file(properties.getProperty("RELEASE_STORE_FILE"))
@@ -41,21 +41,12 @@ android {
         }
     }
 
-    //签名配置
-    signingConfigs {
-        config {
-            storeFile file(KEY_PATH)
-            storePassword KEY_PASS
-            keyAlias ALIAS_NAME
-            keyPassword ALIAS_PASS
-        }
-    }
 
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.config
+            signingConfig signingConfigs.release
         }
     }
 
@@ -79,7 +70,7 @@ android {
         variant.outputs.all { output ->
 //            def outputFile=output.outputFile;
 
-            if(outputFile!=null&&outputFile.name.endsWith('.apk')){
+            if (outputFile != null && outputFile.name.endsWith('.apk')) {
 //                variant.buildType.isDebuggable()//该方法可以判断是否为debug模式
                 //要被替换的源字符串
                 def sourceFile = output.outputFile.name
@@ -102,7 +93,7 @@ android {
         dev {//测试
             applicationId "com.smaboy.xiuxiu.dev"//不同的产品，不用的包名
             versionName "1.0.1"//不同的产品，不同的版本名
-            manifestPlaceholders = [UMC:"dev"]//不同产品，不同的渠道号
+            manifestPlaceholders = [UMC: "dev"]//不同产品，不同的渠道号
         }
 
         pro {//生产

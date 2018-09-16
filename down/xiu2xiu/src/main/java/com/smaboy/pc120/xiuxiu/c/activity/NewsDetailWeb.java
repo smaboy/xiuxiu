@@ -11,7 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.smaboy.pc120.xiuxiu.R;
-import com.smaboy.pc120.xiuxiu.c.base.BaseFragmentActivity;
+import com.smaboy.pc120.xiuxiu.c.base.BaseActivity;
 import com.smaboy.pc120.xiuxiu.c.util.UIUtils;
 
 
@@ -25,7 +25,7 @@ import cn.carbs.android.avatarimageview.library.AvatarImageView;
  * WHERE IS A WILL,THERE IS A WAY!
  */
 @SuppressLint("Registered")
-public class NewsDetailWeb extends BaseFragmentActivity {
+public class NewsDetailWeb extends BaseActivity {
 
     @BindView(R.id.user_head)
     AvatarImageView userHead;

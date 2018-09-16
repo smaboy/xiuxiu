@@ -1,6 +1,5 @@
 package com.smaboy.pc120.xiuxiu.c.activity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -30,10 +29,9 @@ import java.text.SimpleDateFormat;
 import java.util.HashMap;
 
 import com.smaboy.pc120.xiuxiu.R;
-import com.smaboy.pc120.xiuxiu.c.base.BaseFragmentActivity;
+import com.smaboy.pc120.xiuxiu.c.base.BaseActivity;
 import com.smaboy.pc120.xiuxiu.c.interfaces.OnGetPlatformListener;
 import com.smaboy.pc120.xiuxiu.c.util.AlertDialogUtils;
-import com.smaboy.pc120.xiuxiu.c.util.EventBusUtils;
 import com.smaboy.pc120.xiuxiu.c.util.FastBlurUtil;
 import com.smaboy.pc120.xiuxiu.c.util.LogUtil;
 import com.smaboy.pc120.xiuxiu.m.domain.XXUser;
@@ -50,7 +48,7 @@ import cn.smssdk.SMSSDK;
 /**
  * A login screen that offers login via email/password.
  */
-public class LoginActivity extends BaseFragmentActivity implements OnClickListener {
+public class LoginActivity extends BaseActivity implements OnClickListener {
 
 
     private int sum = 0;

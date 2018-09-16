@@ -38,7 +38,7 @@ import android.widget.Toast;
  */
 
 import com.smaboy.pc120.xiuxiu.R;
-import com.smaboy.pc120.xiuxiu.c.base.BaseFragmentActivity;
+import com.smaboy.pc120.xiuxiu.c.base.BaseActivity;
 import com.smaboy.pc120.xiuxiu.c.event.EventMessage;
 import com.smaboy.pc120.xiuxiu.c.fragment.LookingFragment;
 import com.smaboy.pc120.xiuxiu.c.fragment.MeFragment;
@@ -47,7 +47,6 @@ import com.smaboy.pc120.xiuxiu.c.fragment.TalkingFragment;
 import com.smaboy.pc120.xiuxiu.c.util.EventBusUtils;
 import com.smaboy.pc120.xiuxiu.c.util.LogUtil;
 import com.smaboy.pc120.xiuxiu.c.util.SelectPicUtil;
-import com.smaboy.pc120.xiuxiu.c.util.UIUtils;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -63,7 +62,7 @@ import kr.co.namee.permissiongen.PermissionFail;
 import kr.co.namee.permissiongen.PermissionGen;
 import kr.co.namee.permissiongen.PermissionSuccess;
 
-public class MainActivity extends BaseFragmentActivity implements View.OnClickListener {
+public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     private RadioButton looking;
     private RadioButton smallVD;

@@ -4,8 +4,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.annotation.StyleableRes;
-import android.support.v4.media.RatingCompat;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
@@ -20,28 +18,23 @@ import android.widget.TextView;
 
 import com.smaboy.pc120.xiuxiu.R;
 import com.smaboy.pc120.xiuxiu.c.MessageEvent;
-import com.smaboy.pc120.xiuxiu.c.base.BaseFragmentActivity;
+import com.smaboy.pc120.xiuxiu.c.base.BaseActivity;
 import com.smaboy.pc120.xiuxiu.c.constant.UserInfoTips;
 import com.smaboy.pc120.xiuxiu.c.util.EventBusUtils;
 import com.smaboy.pc120.xiuxiu.c.util.FastBlurUtil;
 import com.smaboy.pc120.xiuxiu.c.util.LogUtil;
 import com.smaboy.pc120.xiuxiu.c.util.SPUtils;
 import com.smaboy.pc120.xiuxiu.c.util.ThirdPartyLoginUtils;
-import com.smaboy.pc120.xiuxiu.m.domain.XXUser;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.sql.Date;
 import java.text.SimpleDateFormat;
-import java.util.HashMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import cn.sharesdk.framework.Platform;
-import cn.sharesdk.framework.PlatformActionListener;
-import cn.sharesdk.framework.ShareSDK;
 import cn.sharesdk.sina.weibo.SinaWeibo;
 import cn.sharesdk.tencent.qq.QQ;
 
@@ -51,7 +44,7 @@ import cn.sharesdk.tencent.qq.QQ;
  * 作者: Smaboy
  * 创建时间: 2018/9/14 15:05
  */
-public class LoginActivity_1_0 extends BaseFragmentActivity {
+public class LoginActivity_1_0 extends BaseActivity {
 
     @BindView(R.id.iv_login_register_background)
     ImageView ivLoginRegisterBackground;
@@ -239,13 +232,10 @@ public class LoginActivity_1_0 extends BaseFragmentActivity {
                 }
                 break;
             case R.id.lg_qq_login://qq登录
-//                applyPlatform(QQ.NAME);
-                ThirdPartyLoginUtils.applyPlatform(QQ.NAME);
                 break;
             case R.id.lg_weixin_login://微信登录
                 break;
             case R.id.lg_weibo_login://新浪微博登录
-                ThirdPartyLoginUtils.applyPlatform(SinaWeibo.NAME);
                 break;
             case R.id.rg_btn_send://发送
                 break;

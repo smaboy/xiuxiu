@@ -17,7 +17,7 @@ import com.smaboy.pc120.xiuxiu.c.util.UIUtils;
  * WHERE IS A WILL,THERE IS A WAY!
  */
 
-public class BaseFragmentActivity extends FragmentActivity {
+public class BaseActivity extends FragmentActivity {
 
     public Context context;
 
@@ -42,5 +42,12 @@ public class BaseFragmentActivity extends FragmentActivity {
         //将activity移除activity管理器
         ActivityTaskManager.getInstance().removeActivity(getClass().getSimpleName());
 
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        //设置关闭动画
+//        this.overridePendingTransition(0,R.anim.push_bottom_out);
     }
 }
