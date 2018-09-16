@@ -17,14 +17,13 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import com.smaboy.pc120.xiuxiu.R;
-import com.smaboy.pc120.xiuxiu.c.MessageEvent;
 import com.smaboy.pc120.xiuxiu.c.base.BaseActivity;
 import com.smaboy.pc120.xiuxiu.c.constant.UserInfoTips;
+import com.smaboy.pc120.xiuxiu.c.event.EventMessage;
 import com.smaboy.pc120.xiuxiu.c.util.EventBusUtils;
 import com.smaboy.pc120.xiuxiu.c.util.FastBlurUtil;
 import com.smaboy.pc120.xiuxiu.c.util.LogUtil;
 import com.smaboy.pc120.xiuxiu.c.util.SPUtils;
-import com.smaboy.pc120.xiuxiu.c.util.ThirdPartyLoginUtils;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -35,8 +34,6 @@ import java.text.SimpleDateFormat;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import cn.sharesdk.sina.weibo.SinaWeibo;
-import cn.sharesdk.tencent.qq.QQ;
 
 /**
  * 类名: LoginActivity_1_0
@@ -254,7 +251,7 @@ public class LoginActivity_1_0 extends BaseActivity {
      * @param messageEvent
      */
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void doEvent(MessageEvent messageEvent){
+    public void doEvent(EventMessage messageEvent){
 
     }
 

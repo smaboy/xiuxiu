@@ -36,71 +36,7 @@
         </activity>
 
 
-        <!-->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>开始设置集成环信相关的内容<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<-->
-        <!-- 设置环信应用的appkey -->
-        <meta-data
-            android:name="EASEMOB_APPKEY"
-            android:value="1115161020178363#xiuxiu" />
 
-
-
-        <!-->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>开始设置分享相关的内容<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<-->
-        <!-- ShareSDK的activity -->
-        <activity
-            android:name="com.mob.tools.MobUIShell"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
-            android:windowSoftInputMode="stateHidden|adjustResize">
-
-
-            <!--AuthorizeAdapter继承自cn.sharesdk.framework. authorize.AuthorizeAdapter，-->
-            <!--可以监听到页面的生命周期，也能获取页面的各种UI控件。开发者可以通过继承AuthorizeAdapter，重写其方法，-->
-            <!--并获取各种UI来自定义这个页面的行为。-->
-            <meta-data
-                android:name="AuthorizeAdapter"
-                android:value="com.smaboy.pc120.xiuxiu.c.adapter.MyPlatformAdapter" />
-            <!-- 调用新浪原生SDK，需要注册的回调activity -->
-            <intent-filter>
-                <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-
-
-        </activity>
-        <!-- 填写您从Mob开发者后台中得到的Appkey和AppSecret -->
-        <meta-data
-            android:name="Mob-AppKey"
-            android:value="22fbad626bdb2" />
-        <meta-data
-            android:name="Mob-AppSecret"
-            android:value="dc9fade1e69cd36eb1232067b2c0bc3c" />
-
-        <!--微信分享回调 -->
-        <activity
-            android:name=".wxapi.WXEntryActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:exported="true"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-
-
-        <!--（3.1.0版本之后（包含3.1.0）才需要注册此Activity）如果集成QQ分享，或者使用QQ-->
-        <!--客户端来进行QQ空间的分享，须要在此处添加一个回调activity，对ACTION_VIEW事件的-->
-        <!--过滤器，其中的scheme是“tencent”前缀再开发者应用的加上appId。如果此Activity和-->
-        <!--过滤器不设置，则分享结束以后不能得到正确的回调-->
-        <activity
-            android:name="cn.sharesdk.tencent.qq.ReceiveActivity"
-            android:launchMode="singleTask"
-            android:noHistory="true">
-            <intent-filter><action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data android:scheme="tencent1106539115" />
-            </intent-filter>
-        </activity>
-        <!--QQ分享必须配置上面的activity tencent后面的appid改成你自己的QQ的appid即可-->
 
 
     </application>

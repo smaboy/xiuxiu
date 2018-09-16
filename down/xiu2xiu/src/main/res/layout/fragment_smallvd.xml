@@ -5,20 +5,6 @@
     android:orientation="vertical">
 
 
-    <!--<com.smaboy.pc120.xiuxiu.v.customerview.MyViewPagerTab-->
-    <!--android:id="@+id/smallVD_tab"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content">-->
-
-
-    <!--</com.smaboy.pc120.xiuxiu.v.customerview.MyViewPagerTab>-->
-
-
-    <!--<android.support.v4.view.ViewPager-->
-    <!--android:id="@+id/smallVD_viewpager"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="0dp"-->
-    <!--android:layout_weight="1"/>-->
 
     <com.scwang.smartrefresh.layout.SmartRefreshLayout
         android:id="@+id/refreshLayout"
