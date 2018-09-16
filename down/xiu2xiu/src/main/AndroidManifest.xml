@@ -2,16 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.smaboy.pc120.xiuxiu">
 
-    <!--shareSDK需要的权限-->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-
-    <!--短信注册需要的关键权限-->
-    <uses-permission android:name="android.permission.RECEIVE_SMS" />
-    <uses-permission android:name="android.permission.READ_SMS" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:name="com.smaboy.pc120.xiuxiu.MyApplication"
@@ -20,23 +10,17 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.smaboy.pc120.xiuxiu.c.activity.LoginActivity_1_0"
 
-            >
-
-        </activity>
-
+        <!--activity-->
         <activity android:name=".c.activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
 
-
-
+        <activity android:name="com.smaboy.pc120.xiuxiu.c.activity.LoginActivity_1_0"/>
 
 
     </application>

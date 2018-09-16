@@ -2,6 +2,8 @@ import java.text.SimpleDateFormat
 
 apply plugin: 'com.android.application'
 
+apply plugin: 'com.mob.sdk'
+
 //初始化properties,用于后面从local.properties文件中获取数据
 Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
@@ -105,43 +107,73 @@ android {
 }
 
 
-dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    testImplementation 'junit:junit:4.12'
-    implementation 'com.android.support:appcompat-v7:27.1.1'
-    //noinspection GradleDependency
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-    implementation 'com.android.support:design:27.1.1'
-    implementation 'com.android.support:support-v4:27.1.1'
-    //异步处理
-    implementation 'org.greenrobot:eventbus:3.1.1'
-    //用于联系人和其他圆形头像
-    implementation 'cn.carbs.android:AvatarImageView:1.0.4'
-    implementation 'de.hdodenhof:circleimageview:2.1.0'
-    //图片框架
-    implementation 'com.facebook.fresco:fresco:1.5.0'
-    implementation 'com.github.bumptech.glide:glide:3.8.0'
-    //权限管理类库
-    implementation 'com.lovedise:permissiongen:0.0.6'
-    //网络框架
-    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
-    implementation 'com.squareup.okhttp3:okhttp:3.11.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
-    //依赖注入
-    implementation 'com.jakewharton:butterknife:8.8.1'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
-    //解决方法数过多
-    implementation 'com.android.support:multidex:1.0.3'
-    //数据库框架
-    implementation 'org.greenrobot:greendao:3.2.2'
-    //分享
+MobSDK {
+    appKey " 22fbad626bdb2"
+    appSecret "dc9fade1e69cd36eb1232067b2c0bc3c"
 
-    //下拉刷新框架
-    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.5.1'
-    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.5.1'//没有使用特殊Header，可以不加这行
+    ShareSDK {
+        //平台配置信息
+        devInfo {
+            SinaWeibo {
+                appKey "1978692966"
+                appSecret "f1179cb5f0d1ee573ef1e377347dc49b"
+                callbackUri "http://www.sharesdk.cn"
+                shareByAppClient true
+                Enable true
+            }
+            Wechat {
+                appId "wx4868b35061f87885"
+                appSecret "64020361b8ec4c99936c0e3999a9f249"
+            }
+            QQ {
+                appId "1106539115"
+                appKey "Stqf7s5sWfMPrpPS"
+                shareByAppClient true
+                Enable true
+            }
+        }
 
-
+    }
 }
+
+
+    dependencies {
+        implementation fileTree(include: ['*.jar'], dir: 'libs')
+        androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+            exclude group: 'com.android.support', module: 'support-annotations'
+        })
+        testImplementation 'junit:junit:4.12'
+        implementation 'com.android.support:appcompat-v7:27.1.1'
+        //noinspection GradleDependency
+        implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+        implementation 'com.android.support:design:27.1.1'
+        implementation 'com.android.support:support-v4:27.1.1'
+        //异步处理
+        implementation 'org.greenrobot:eventbus:3.1.1'
+        //用于联系人和其他圆形头像
+        implementation 'cn.carbs.android:AvatarImageView:1.0.4'
+        implementation 'de.hdodenhof:circleimageview:2.1.0'
+        //图片框架
+        implementation 'com.facebook.fresco:fresco:1.5.0'
+        implementation 'com.github.bumptech.glide:glide:3.8.0'
+        //权限管理类库
+        implementation 'com.lovedise:permissiongen:0.0.6'
+        //网络框架
+        implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+        implementation 'com.squareup.okhttp3:okhttp:3.11.0'
+        implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+        //依赖注入
+        implementation 'com.jakewharton:butterknife:8.8.1'
+        annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+        //解决方法数过多
+        implementation 'com.android.support:multidex:1.0.3'
+        //数据库框架
+        implementation 'org.greenrobot:greendao:3.2.2'
+        //分享
+
+        //下拉刷新框架
+        implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.5.1'
+        implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.5.1'//没有使用特殊Header，可以不加这行
+
+
+    }
