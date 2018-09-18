@@ -3,6 +3,7 @@ package com.smaboy.pc120.xiuxiu.c.activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
+import com.smaboy.pc120.xiuxiu.R;
 import com.smaboy.pc120.xiuxiu.c.base.BaseActivity;
 
 /**
@@ -19,5 +20,11 @@ public class MainActivity_1_0 extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+
     }
 }

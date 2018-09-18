@@ -6,6 +6,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
+import android.view.View;
 
 import com.smaboy.pc120.xiuxiu.R;
 import com.smaboy.pc120.xiuxiu.c.manager.ActivityTaskManager;
@@ -33,6 +34,9 @@ public class BaseActivity extends FragmentActivity {
 
 
         context=this;
+
+        //设置空的view
+        setContentView(R.layout.activity_base);
     }
 
 

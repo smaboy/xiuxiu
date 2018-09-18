@@ -5,6 +5,10 @@
     android:layout_height="match_parent"
     >
 
-    <include layout="@layout/activity_title"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="我是所有activity的基类"
+        android:gravity="center"/>
 
 </LinearLayout>

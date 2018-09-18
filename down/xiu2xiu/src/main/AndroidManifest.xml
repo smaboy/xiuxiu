@@ -21,6 +21,7 @@
         </activity>
 
         <activity android:name="com.smaboy.pc120.xiuxiu.c.activity.LoginActivity_1_0"/>
+        <activity android:name="com.smaboy.pc120.xiuxiu.c.activity.MainActivity_1_0"/>
 
 
     </application>

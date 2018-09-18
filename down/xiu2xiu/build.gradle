@@ -48,6 +48,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
         }
+
+        debug{
+            signingConfig signingConfigs.debug
+        }
     }
 
     //设置打包命令
@@ -114,18 +118,29 @@ MobSDK {
     ShareSDK {
         //平台配置信息
         devInfo {
-            SinaWeibo {
+            SinaWeibo {//新浪微博
                 appKey "1978692966"
                 appSecret "f1179cb5f0d1ee573ef1e377347dc49b"
                 callbackUri "http://www.sharesdk.cn"
                 shareByAppClient true
                 Enable true
             }
-            Wechat {
+            Wechat {//微信朋友
                 appId "wx4868b35061f87885"
                 appSecret "64020361b8ec4c99936c0e3999a9f249"
             }
-            QQ {
+            WechatMoments{//微信朋友圈
+                appId "wx4868b35061f87885"
+                appSecret "64020361b8ec4c99936c0e3999a9f249"
+
+            }
+            QQ {//
+                appId "1106539115"
+                appKey "Stqf7s5sWfMPrpPS"
+                shareByAppClient true
+                Enable true
+            }
+            QZone{
                 appId "1106539115"
                 appKey "Stqf7s5sWfMPrpPS"
                 shareByAppClient true

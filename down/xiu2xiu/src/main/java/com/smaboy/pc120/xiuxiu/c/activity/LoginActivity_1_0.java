@@ -1,5 +1,6 @@
 package com.smaboy.pc120.xiuxiu.c.activity;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -24,17 +25,23 @@ import com.smaboy.pc120.xiuxiu.c.util.EventBusUtils;
 import com.smaboy.pc120.xiuxiu.c.util.FastBlurUtil;
 import com.smaboy.pc120.xiuxiu.c.util.LogUtil;
 import com.smaboy.pc120.xiuxiu.c.util.SPUtils;
+import com.smaboy.pc120.xiuxiu.c.util.ThirdPartLoginUtils;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import cn.sharesdk.onekeyshare.OnekeyShare;
+import cn.sharesdk.framework.Platform;
+import cn.sharesdk.framework.PlatformActionListener;
+import cn.sharesdk.sina.weibo.SinaWeibo;
+import cn.sharesdk.tencent.qq.QQ;
+import cn.sharesdk.wechat.friends.Wechat;
 
 /**
  * 类名: LoginActivity_1_0
@@ -200,6 +207,8 @@ public class LoginActivity_1_0 extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.lg_btn_login://登录
+                go2MainActivity();
+
                 break;
             case R.id.lg_cb_remember_no://记住账号
                 if(lgCbRememberNo.isChecked()) {
@@ -230,11 +239,58 @@ public class LoginActivity_1_0 extends BaseActivity {
                 }
                 break;
             case R.id.lg_qq_login://qq登录
-                showShare();
+                ThirdPartLoginUtils.getPlatform(QQ.NAME, false, false, new PlatformActionListener() {
+                    @Override
+                    public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
+                        LogUtil.e(platform.getDb().getUserId());
+                    }
+
+                    @Override
+                    public void onError(Platform platform, int i, Throwable throwable) {
+
+                    }
+
+                    @Override
+                    public void onCancel(Platform platform, int i) {
+
+                    }
+                });
                 break;
             case R.id.lg_weixin_login://微信登录
+                ThirdPartLoginUtils.getPlatform(Wechat.NAME, false, false, new PlatformActionListener() {
+                    @Override
+                    public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
+                        LogUtil.e(platform.getDb().getUserId());
+                    }
+
+                    @Override
+                    public void onError(Platform platform, int i, Throwable throwable) {
+
+                    }
+
+                    @Override
+                    public void onCancel(Platform platform, int i) {
+
+                    }
+                });
                 break;
             case R.id.lg_weibo_login://新浪微博登录
+                ThirdPartLoginUtils.getPlatform(SinaWeibo.NAME, false, false, new PlatformActionListener() {
+                    @Override
+                    public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
+                        LogUtil.e(platform.getDb().getUserId());
+                    }
+
+                    @Override
+                    public void onError(Platform platform, int i, Throwable throwable) {
+
+                    }
+
+                    @Override
+                    public void onCancel(Platform platform, int i) {
+
+                    }
+                });
                 break;
             case R.id.rg_btn_send://发送
                 break;
@@ -247,6 +303,13 @@ public class LoginActivity_1_0 extends BaseActivity {
         }
     }
 
+    private void go2MainActivity() {
+        Intent intent=new Intent();
+        intent.setClass(this,MainActivity_1_0.class);
+        startActivity(intent);
+
+    }
+
     /**
      *
      * Eventbus消息处理
@@ -257,26 +320,7 @@ public class LoginActivity_1_0 extends BaseActivity {
 
     }
 
-    private void showShare() {
-        OnekeyShare oks = new OnekeyShare();
-        //关闭sso授权
-        oks.disableSSOWhenAuthorize();
 
-        // title标题，微信、QQ和QQ空间等平台使用
-        oks.setTitle("良子");
-        // titleUrl QQ和QQ空间跳转链接
-        oks.setTitleUrl("http://sharesdk.cn");
-        // text是分享文本，所有平台都需要这个字段
-        oks.setText("我是分享文本");
-        // imagePath是图片的本地路径，Linked-In以外的平台都支持此参数
-//        oks.setImagePath("/sdcard/test.jpg");//确保SDcard下面存在此张图片
-        // url在微信、微博，Facebook等平台中使用
-        oks.setUrl("http://sharesdk.cn");
-        // comment是我对这条分享的评论，仅在人人网使用
-        oks.setComment("我是测试评论文本");
-        // 启动分享GUI
-        oks.show(this);
-    }
 
 
 }
