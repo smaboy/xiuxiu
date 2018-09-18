@@ -3,14 +3,22 @@
     <string name="title_activity_login">登录</string>
 
     <!-- Strings related to login -->
-    <string name="et_user_name">用户名</string>
-    <string name="et_password">密码</string>
-    <string name="btn_login">登录</string>
-    <string name="btn_register">注册</string>
-    <string name="error_invalid_email">用户名已存在</string>
-    <string name="error_invalid_password">密码不能少于6位</string>
-    <string name="error_incorrect_password">密码不正确</string>
-    <string name="error_field_required">地址不能为空</string>
+    <string name="user_name">用户名</string>
+    <string name="password">密码</string>
+    <string name="remember_no">记住账号</string>
+    <string name="auto_login">自动登录</string>
+    <string name="login">登录</string>
+    <string name="third_login">第三方登录</string>
+    <string name="qq_login">QQ登录</string>
+    <string name="weichat_login">微信登录</string>
+    <string name="sinaweibo_login">微博登录</string>
+
+    <string name="phone_no">手机号</string>
+    <string name="check_no">验证码</string>
+    <string name="password_agian_no">确认密码</string>
+    <string name="send">发送</string>
+    <string name="register">注册</string>
+
 
     <!--主页四大栏目标题-->
     <string name="main_talk">聊天</string>

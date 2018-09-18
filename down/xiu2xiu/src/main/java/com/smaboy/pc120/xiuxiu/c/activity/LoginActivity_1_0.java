@@ -5,7 +5,10 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TextInputLayout;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -93,6 +96,18 @@ public class LoginActivity_1_0 extends BaseActivity {
     TextView tvProgress;
     @BindView(R.id.ll_progress)
     LinearLayout llProgress;
+    @BindView(R.id.tipl_user_name)
+    TextInputLayout tiplUserName;
+    @BindView(R.id.tipl_pwd)
+    TextInputLayout tiplPwd;
+    @BindView(R.id.tipl_rg_phone_no)
+    TextInputLayout tiplRgPhoneNo;
+    @BindView(R.id.tipl_rg_check_no)
+    TextInputLayout tiplRgCheckNo;
+    @BindView(R.id.tipl_rg_pwd1)
+    TextInputLayout tiplRgPwd1;
+    @BindView(R.id.tipl_rg_pwd2)
+    TextInputLayout tiplRgPwd2;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -108,12 +123,39 @@ public class LoginActivity_1_0 extends BaseActivity {
 
         init();
 
+        setListener();
+
         initData();
+    }
+
+    private void setListener() {
+        //设置各输入框监听
+        lgActvUserName.addTextChangedListener(new TextWatcher() {
+
+            String str1="";
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                tiplUserName.setErrorEnabled(false);
+                str1=charSequence.toString();
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if(charSequence.toString().length()>10) {
+                    tiplUserName.setErrorEnabled(true);
+                    tiplUserName.setError("用户名不要超过十个字符");
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
     }
 
     /**
      * 初始化数据
-     *
      */
     private void initData() {
 
@@ -129,18 +171,19 @@ public class LoginActivity_1_0 extends BaseActivity {
         switchLoginRegister.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if(b) {//设置为没选中状态
+                if (b) {//设置为没选中状态
                     itemLogin.setVisibility(View.GONE);
                     itemRegister.setVisibility(View.VISIBLE);
                     switchLoginRegister.setText("注册");
 
-                }else {
+                } else {
                     itemLogin.setVisibility(View.VISIBLE);
                     itemRegister.setVisibility(View.GONE);
                     switchLoginRegister.setText("登录");
                 }
             }
         });
+
 
     }
 
@@ -166,7 +209,7 @@ public class LoginActivity_1_0 extends BaseActivity {
 //        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss");
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH");
         String str = simpleDateFormat.format(date);
-        LogUtil.e("当前系统时间为:"+date.toString());
+        LogUtil.e("当前系统时间为:" + date.toString());
 
         if (!TextUtils.isEmpty(str)) {
 
@@ -176,18 +219,20 @@ public class LoginActivity_1_0 extends BaseActivity {
 
             //开始设置图片
 //            int n01=(int)(Math.random()*60);  //随机数
-            if (mHour < 12) {
-//                iv_background.setBackground(getDrawable(R.drawable.login1));
-                Bitmap bitmap = FastBlurUtil.toBlur(BitmapFactory.decodeResource(getResources(), R.drawable.login1), 2);
-                ivLoginRegisterBackground.setImageBitmap(bitmap);
-
-            } else if (mHour < 18) {
-                Bitmap bitmap = FastBlurUtil.toBlur(BitmapFactory.decodeResource(getResources(), R.drawable.login5), 2);
-                ivLoginRegisterBackground.setImageBitmap(bitmap);
-            } else {
-                Bitmap bitmap = FastBlurUtil.toBlur(BitmapFactory.decodeResource(getResources(), R.drawable.login6), 2);
-                ivLoginRegisterBackground.setImageBitmap(bitmap);
-            }
+            Bitmap bitmap = FastBlurUtil.toBlur(BitmapFactory.decodeResource(getResources(), R.drawable.login3), 2);
+            ivLoginRegisterBackground.setImageBitmap(bitmap);
+//            if (mHour < 12) {
+////                iv_background.setBackground(getDrawable(R.drawable.login1));
+//                Bitmap bitmap = FastBlurUtil.toBlur(BitmapFactory.decodeResource(getResources(), R.drawable.login1), 2);
+//                ivLoginRegisterBackground.setImageBitmap(bitmap);
+//
+//            } else if (mHour < 18) {
+//                Bitmap bitmap = FastBlurUtil.toBlur(BitmapFactory.decodeResource(getResources(), R.drawable.login5), 2);
+//                ivLoginRegisterBackground.setImageBitmap(bitmap);
+//            } else {
+//                Bitmap bitmap = FastBlurUtil.toBlur(BitmapFactory.decodeResource(getResources(), R.drawable.login6), 2);
+//                ivLoginRegisterBackground.setImageBitmap(bitmap);
+//            }
 
 
         }
@@ -211,12 +256,12 @@ public class LoginActivity_1_0 extends BaseActivity {
 
                 break;
             case R.id.lg_cb_remember_no://记住账号
-                if(lgCbRememberNo.isChecked()) {
-                    SPUtils.getInstance(this).putSP(UserInfoTips.USER_REMEMBER_NO,"1");//添加记住账号标识
-                    SPUtils.getInstance(this).putSP(UserInfoTips.USER_NAME,lgActvUserName.getText().toString());//保存姓名
+                if (lgCbRememberNo.isChecked()) {
+                    SPUtils.getInstance(this).putSP(UserInfoTips.USER_REMEMBER_NO, "1");//添加记住账号标识
+                    SPUtils.getInstance(this).putSP(UserInfoTips.USER_NAME, lgActvUserName.getText().toString());//保存姓名
 
 
-                }else {
+                } else {
                     lgCbAutoLogin.setChecked(false);//不记住账户，自动登录也取消
                     SPUtils.getInstance(this).removeSP(UserInfoTips.USER_AUTO_LOGIN);//移除自动登录标识
                     SPUtils.getInstance(this).removeSP(UserInfoTips.USER_REMEMBER_NO);//移除记住账号标识
@@ -226,14 +271,14 @@ public class LoginActivity_1_0 extends BaseActivity {
 
                 break;
             case R.id.lg_cb_auto_login://自动登录
-                if(lgCbAutoLogin.isChecked()) {//点选中状态
+                if (lgCbAutoLogin.isChecked()) {//点选中状态
                     lgCbRememberNo.setChecked(true);//记住账号也会变为选中状态
-                    SPUtils.getInstance(this).putSP(UserInfoTips.USER_AUTO_LOGIN,"1");//添加自动登录标识
-                    SPUtils.getInstance(this).putSP(UserInfoTips.USER_REMEMBER_NO,"1");//添加记住账号标识
-                    SPUtils.getInstance(this).putSP(UserInfoTips.USER_NAME,lgActvUserName.getText().toString());//保存姓名
-                    SPUtils.getInstance(this).putSP(UserInfoTips.USER_PWD,lgEtPwd.getText().toString());//保存密码
+                    SPUtils.getInstance(this).putSP(UserInfoTips.USER_AUTO_LOGIN, "1");//添加自动登录标识
+                    SPUtils.getInstance(this).putSP(UserInfoTips.USER_REMEMBER_NO, "1");//添加记住账号标识
+                    SPUtils.getInstance(this).putSP(UserInfoTips.USER_NAME, lgActvUserName.getText().toString());//保存姓名
+                    SPUtils.getInstance(this).putSP(UserInfoTips.USER_PWD, lgEtPwd.getText().toString());//保存密码
 
-                }else {//没选中状态
+                } else {//没选中状态
                     SPUtils.getInstance(this).removeSP(UserInfoTips.USER_AUTO_LOGIN);//移除自动登录标识
                     SPUtils.getInstance(this).removeSP(UserInfoTips.USER_PWD);//移除密码
                 }
@@ -304,23 +349,21 @@ public class LoginActivity_1_0 extends BaseActivity {
     }
 
     private void go2MainActivity() {
-        Intent intent=new Intent();
-        intent.setClass(this,MainActivity_1_0.class);
+        Intent intent = new Intent();
+        intent.setClass(this, MainActivity_1_0.class);
         startActivity(intent);
 
     }
 
     /**
-     *
      * Eventbus消息处理
+     *
      * @param messageEvent
      */
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void doEvent(EventMessage messageEvent){
+    public void doEvent(EventMessage messageEvent) {
 
     }
-
-
 
 
 }

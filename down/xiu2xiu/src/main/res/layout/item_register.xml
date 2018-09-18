@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_marginLeft="30dp"
     android:layout_marginRight="30dp"
     android:orientation="vertical"
@@ -9,7 +10,11 @@
     android:layout_gravity="center"
     android:background="@drawable/user_pwd_shape_background"
     android:padding="5dp"
-    android:id="@+id/item_register">
+    android:visibility="gone"
+    tools:showIn="@layout/activity_login_1_0"
+    android:id="@+id/item_register"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
 
 
 
@@ -18,7 +23,8 @@
         android:layout_height="60dp"
         android:scaleType="fitXY"
         android:src="@drawable/man2"
-        android:layout_margin="5dp" />
+        android:layout_margin="5dp"
+        tools:ignore="ContentDescription" />
 
 
     <RelativeLayout
@@ -27,90 +33,102 @@
         >
 
         <android.support.design.widget.TextInputLayout
+            android:id="@+id/tipl_rg_phone_no"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColorHint="#fff">
+            android:hint="@string/phone_no"
+            android:textColorHint="@color/login_register_blue">
 
             <EditText
                 android:id="@+id/rg_et_phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="请输入手机号"
                 android:inputType="phone"
-
-                />
+                android:textColor="@color/login_register_white"
+                tools:ignore="LabelFor" />
         </android.support.design.widget.TextInputLayout>
 
         <Button
             android:id="@+id/rg_btn_send"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:text="发送"
-            android:background="@drawable/user_pwd_shape_background"
+            android:layout_height="30dp"
+            android:text="@string/send"
+            android:background="@drawable/retangle_c2_solid_translate_stroke_white_shape"
             android:layout_marginRight="10dp"
-            android:textSize="16sp"
+            android:textSize="12sp"
+            android:textColor="@color/login_register_white"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            />
+            android:layout_marginEnd="10dp"
+            android:layout_alignParentEnd="true"
+            tools:ignore="RelativeOverlap" />
     </RelativeLayout>
 
 
 
 
     <android.support.design.widget.TextInputLayout
+        android:id="@+id/tipl_rg_check_no"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColorHint="#fff">
+        android:textColorHint="@color/login_register_blue"
+        android:hint="@string/check_no">
 
         <EditText
             android:id="@+id/rg_et_check_no"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="请输入验证码"
-
-            />
+            android:textColor="@color/login_register_white"
+            android:inputType="number"
+            tools:ignore="LabelFor" />
     </android.support.design.widget.TextInputLayout>
 
 
 
     <android.support.design.widget.TextInputLayout
+        android:id="@+id/tipl_rg_pwd1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColorHint="#fff">
+        android:textColorHint="@color/login_register_blue"
+        android:hint="@string/password">
 
         <EditText
             android:id="@+id/rg_et_pwd1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
-            android:hint="请输入密码"
-            />
+            android:textColor="@color/login_register_white"
+            tools:ignore="LabelFor" />
     </android.support.design.widget.TextInputLayout>
 
 
 
     <android.support.design.widget.TextInputLayout
+        android:id="@+id/tipl_rg_pwd2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColorHint="#fff">
+        android:textColorHint="@color/login_register_blue"
+        android:hint="@string/password_agian_no">
 
         <EditText
             android:id="@+id/rg_et_pwd2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
-            android:hint="请再次输入密码"
-            />
+            tools:ignore="LabelFor"
+            android:textColor="@color/login_register_white"/>
     </android.support.design.widget.TextInputLayout>
 
     <Button
         android:id="@+id/rg_btn_register"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="注册"
+        android:layout_height="40dp"
+        android:text="@string/register"
+        android:textColor="@color/login_register_white"
         android:textSize="20sp"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="40dp"
+        android:background="@drawable/retangle_c2_solid_translate_stroke_white_shape"
         />
 
 

@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:orientation="horizontal"
-        android:background="@drawable/round_retangle_shape"
+        android:background="@drawable/retangle_c2_solid_translate_stroke_white_shape"
         android:visibility="visible">
 
         <TextView

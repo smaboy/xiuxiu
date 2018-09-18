@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,10 +9,15 @@
     android:gravity="center"
     android:layout_gravity="center"
     android:background="@drawable/user_pwd_shape_background"
-    tools:showIn="@layout/activity_login"
-    android:visibility="gone"
-    android:id="@+id/item_login">
+    tools:showIn="@layout/activity_login_1_0"
+    android:visibility="visible"
+    android:id="@+id/item_login"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
 
+    <!--去除EditText自动获取焦点-->
+    <!--android:focusable="true"-->
+    <!--android:focusableInTouchMode="true"-->
 
     <ImageView
         android:id="@+id/lg_iv_user_head"
@@ -23,56 +26,58 @@
         android:scaleType="fitXY"
         android:src="@drawable/man2"
         android:layout_gravity="center_horizontal"
-        android:layout_margin="5dp" />
+        android:layout_margin="5dp"
+        tools:ignore="ContentDescription" />
 
     <android.support.design.widget.TextInputLayout
+        android:id="@+id/tipl_user_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColorHint="#fff">
+        android:textColorHint="@color/login_register_blue"
+        >
 
         <AutoCompleteTextView
             android:id="@+id/lg_actv_user_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/et_user_name"
+            android:hint="@string/user_name"
             android:inputType="textEmailAddress"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:textColorHint="#fff"
+            android:textColor="@color/login_register_white"
             android:textSize="18sp" />
 
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
+        android:id="@+id/tipl_pwd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColorHint="#fff">
+        android:textColorHint="@color/login_register_blue"
+        >
 
         <EditText
             android:id="@+id/lg_et_pwd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/et_password"
-            android:imeActionId="6"
-            android:imeActionLabel="@string/error_invalid_password"
-            android:imeOptions="actionUnspecified"
+            android:hint="@string/password"
             android:inputType="textPassword"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:textColorHint="#fff"
-            android:textSize="18sp" />
+            android:textColor="@color/login_register_white"
+            android:textSize="18sp"
+            android:textColorLink="@color/login_register_white"
+            />
 
     </android.support.design.widget.TextInputLayout>
 
     <Button
         android:id="@+id/lg_btn_login"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_marginTop="16dp"
-        android:text="@string/btn_login"
+        android:text="@string/login"
         android:textStyle="bold"
         android:textSize="20sp"
-        android:textColor="@color/xx_write_tobar" />
+        android:textColor="@color/login_register_white"
+        android:background="@drawable/retangle_c2_solid_blue_shape"
+        />
 
 
     <LinearLayout
@@ -86,18 +91,20 @@
             android:id="@+id/lg_cb_remember_no"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="记住帐号"
+            android:text="@string/remember_no"
             android:gravity="center"
-            android:textColor="@color/xx_write_tobar" />
+            android:textColor="@color/xx_write_tobar"
+            android:textSize="14sp"/>
 
         <CheckBox
             android:id="@+id/lg_cb_auto_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="自动登录"
+            android:text="@string/auto_login"
             android:layout_marginLeft="10dp"
-            android:textColor="@color/xx_write_tobar"
-            android:shadowColor="@color/xx_write_tobar" />
+            android:textColor="@color/login_register_white"
+            android:layout_marginStart="10dp"
+            android:textSize="14sp"/>
     </LinearLayout>
 
 
@@ -110,18 +117,22 @@
 
         <TextView
             android:layout_width="0dp"
-            android:layout_height="1sp"
-            android:layout_weight="1"/>
+            android:layout_height="1dp"
+            android:layout_weight="1"
+            android:background="@color/login_register_white"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="第三方登录" />
+            android:text="@string/third_login"
+            android:textColor="@color/login_register_white"
+            android:textSize="12sp"/>
 
         <TextView
             android:layout_width="0dp"
-            android:layout_height="1sp"
-            android:layout_weight="1" />
+            android:layout_height="1dp"
+            android:layout_weight="1"
+            android:background="@color/login_register_white"/>
 
     </LinearLayout>
 
@@ -137,10 +148,11 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:drawableTop="@drawable/icon_qq"
-            android:text="qq登录"
+            android:text="@string/qq_login"
             android:textColor="@color/xx_write_tobar"
             android:gravity="center"
-            android:drawablePadding="5dp" />
+            android:drawablePadding="5dp"
+            android:textSize="14sp"/>
 
         <TextView
             android:id="@+id/lg_weixin_login"
@@ -148,10 +160,11 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:drawableTop="@drawable/icon_weixing"
-            android:text="微信登录"
+            android:text="@string/weichat_login"
             android:textColor="@color/xx_write_tobar"
             android:gravity="center"
-            android:drawablePadding="5dp" />
+            android:drawablePadding="5dp"
+            android:textSize="14sp"/>
 
         <TextView
             android:id="@+id/lg_weibo_login"
@@ -159,10 +172,11 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:drawableTop="@drawable/icon_weibo"
-            android:text="微博登录"
+            android:text="@string/sinaweibo_login"
             android:textColor="@color/xx_write_tobar"
             android:gravity="center"
-            android:drawablePadding="5dp" />
+            android:drawablePadding="5dp"
+            android:textSize="14sp"/>
 
 
     </LinearLayout>

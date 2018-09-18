@@ -15,4 +15,8 @@
 
     <color name="btn_white_normal">#f7f8f8</color>
     <color name="btn_white_pressed">#b5b5b6</color>
+
+    <!--2018-9-18颜色配置-->
+    <color name="login_register_blue">#2269D5</color>
+    <color name="login_register_white">#FFFFFF</color>
 </resources>
