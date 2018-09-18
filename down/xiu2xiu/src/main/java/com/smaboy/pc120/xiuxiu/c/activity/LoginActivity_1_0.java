@@ -9,6 +9,7 @@ import android.support.design.widget.TextInputLayout;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -109,6 +110,8 @@ public class LoginActivity_1_0 extends BaseActivity {
     @BindView(R.id.tipl_rg_pwd2)
     TextInputLayout tiplRgPwd2;
 
+    private boolean isLogin = true;//标识当前是登录界面，还是注册界面
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -132,16 +135,17 @@ public class LoginActivity_1_0 extends BaseActivity {
         //设置各输入框监听
         lgActvUserName.addTextChangedListener(new TextWatcher() {
 
-            String str1="";
+            String str1 = "";
+
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 tiplUserName.setErrorEnabled(false);
-                str1=charSequence.toString();
+                str1 = charSequence.toString();
             }
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if(charSequence.toString().length()>10) {
+                if (charSequence.toString().length() > 10) {
                     tiplUserName.setErrorEnabled(true);
                     tiplUserName.setError("用户名不要超过十个字符");
                 }
@@ -172,14 +176,12 @@ public class LoginActivity_1_0 extends BaseActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {//设置为没选中状态
-                    itemLogin.setVisibility(View.GONE);
-                    itemRegister.setVisibility(View.VISIBLE);
-                    switchLoginRegister.setText("注册");
+                    isLogin = false;
+                    setCurrentPager();
 
                 } else {
-                    itemLogin.setVisibility(View.VISIBLE);
-                    itemRegister.setVisibility(View.GONE);
-                    switchLoginRegister.setText("登录");
+                    isLogin = true;
+                    setCurrentPager();
                 }
             }
         });
@@ -187,12 +189,38 @@ public class LoginActivity_1_0 extends BaseActivity {
 
     }
 
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        float sx=0;
+        float ex;
+
+        switch (event.getAction()) {
+
+            case MotionEvent.ACTION_DOWN:
+                sx = event.getX();
+
+                break;
+            case MotionEvent.ACTION_MOVE:
+
+                break;
+            case MotionEvent.ACTION_UP:
+                ex=event.getX();
+                if(ex-sx>20) {//当左右滑动距离大于20的时候，触发页面切换
+                    isLogin=!isLogin;
+                    setCurrentPager();
+                    return true;
+                }
+
+                break;
+        }
+
+        return super.onTouchEvent(event);
+    }
+
     //首次进来初始化
     private void init() {
         //初始化布局为登录页面
-        switchLoginRegister.setChecked(false);
-        itemLogin.setVisibility(View.VISIBLE);
-        itemRegister.setVisibility(View.GONE);
+        setCurrentPager();
 
         //记住账号，自动登录为不选中装填
         lgCbRememberNo.setChecked(false);
@@ -237,6 +265,24 @@ public class LoginActivity_1_0 extends BaseActivity {
 
         }
 
+    }
+
+    /**
+     * 设置当前页面是登录页面还是注册页面
+     */
+    private void setCurrentPager() {
+        if (isLogin) {
+            switchLoginRegister.setChecked(false);
+            switchLoginRegister.setText(R.string.login);
+            itemLogin.setVisibility(View.VISIBLE);
+            itemRegister.setVisibility(View.GONE);
+
+        } else {
+            switchLoginRegister.setChecked(true);
+            switchLoginRegister.setText(R.string.register);
+            itemLogin.setVisibility(View.GONE);
+            itemRegister.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
