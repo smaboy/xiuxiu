@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.smaboy.pc120.xiuxiu.R;
@@ -51,8 +52,15 @@ public class SplashActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        //设置布局
         setContentView(R.layout.splash_activity);
+
+        //设置注释绑定
         ButterKnife.bind(this);
+
+        //设置隐藏状态栏
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
 
         initData();
 

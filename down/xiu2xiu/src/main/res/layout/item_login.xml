@@ -10,7 +10,7 @@
     android:layout_gravity="center"
     android:background="@drawable/user_pwd_shape_background"
     tools:showIn="@layout/activity_login_1_0"
-    android:visibility="visible"
+    android:visibility="gone"
     android:id="@+id/item_login"
     android:focusable="true"
     android:focusableInTouchMode="true">
