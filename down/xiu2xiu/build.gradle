@@ -126,12 +126,12 @@ MobSDK {
                 Enable true
             }
             Wechat {//微信朋友
-                appId "wx4868b35061f87885"
-                appSecret "64020361b8ec4c99936c0e3999a9f249"
+                appId "wxe48d85ff4372e9d0"
+                appSecret "421d7b223f19ed55fe2ba1a0aa4ceed9"
             }
             WechatMoments{//微信朋友圈
-                appId "wx4868b35061f87885"
-                appSecret "64020361b8ec4c99936c0e3999a9f249"
+                appId "wxe48d85ff4372e9d0"
+                appSecret "421d7b223f19ed55fe2ba1a0aa4ceed9"
 
             }
             QQ {//

@@ -28,6 +28,7 @@ import com.smaboy.pc120.xiuxiu.c.event.EventMessage;
 import com.smaboy.pc120.xiuxiu.c.util.EventBusUtils;
 import com.smaboy.pc120.xiuxiu.c.util.FastBlurUtil;
 import com.smaboy.pc120.xiuxiu.c.util.LogUtil;
+import com.smaboy.pc120.xiuxiu.c.util.OneKeyShareUtils;
 import com.smaboy.pc120.xiuxiu.c.util.SPUtils;
 import com.smaboy.pc120.xiuxiu.c.util.ThirdPartLoginUtils;
 
@@ -189,10 +190,11 @@ public class LoginActivity_1_0 extends BaseActivity {
 
     }
 
+    float sx;//刚按下时，Y轴位置
+    float ex;//抬起时，Y轴位置
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        float sx=0;
-        float ex;
+
 
         switch (event.getAction()) {
 
@@ -205,12 +207,11 @@ public class LoginActivity_1_0 extends BaseActivity {
                 break;
             case MotionEvent.ACTION_UP:
                 ex=event.getX();
-                if(ex-sx>20) {//当左右滑动距离大于20的时候，触发页面切换
+                if(Math.abs(ex-sx)>60) {//当左右滑动距离大于20的时候，触发页面切换
                     isLogin=!isLogin;
                     setCurrentPager();
                     return true;
                 }
-
                 break;
         }
 
@@ -348,22 +349,8 @@ public class LoginActivity_1_0 extends BaseActivity {
                 });
                 break;
             case R.id.lg_weixin_login://微信登录
-                ThirdPartLoginUtils.getPlatform(Wechat.NAME, false, false, new PlatformActionListener() {
-                    @Override
-                    public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
-                        LogUtil.e(platform.getDb().getUserId());
-                    }
-
-                    @Override
-                    public void onError(Platform platform, int i, Throwable throwable) {
-
-                    }
-
-                    @Override
-                    public void onCancel(Platform platform, int i) {
-
-                    }
-                });
+                OneKeyShareUtils.showShare("良哥来了","https://user.qzone.qq.com/405923832/main","良哥成神，你敢信","https://qlogo1.store.qq.com/qzone/405923832/405923832/100?1527921066",
+                        "https://user.qzone.qq.com/405923832/main","",this);
                 break;
             case R.id.lg_weibo_login://新浪微博登录
                 ThirdPartLoginUtils.getPlatform(SinaWeibo.NAME, false, false, new PlatformActionListener() {
