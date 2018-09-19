@@ -79,7 +79,7 @@ android {
                 //要被替换的源字符串
                 def sourceFile = output.outputFile.name
                 //替换的字符串
-                def replaceFile = "xiuixu_${variant.buildType.name}_V${variant.versionName}_${releaseTime()}_${variant.flavorName}.apk"
+                def replaceFile = "xiuixu_${variant.buildType.name}_${variant.versionName}_${releaseTime()}_${variant.flavorName}.apk"
                 outputFileName = output.outputFile.name.replace(sourceFile, replaceFile)
                 //遗留问题：如何获取当前module的name，如CodeBooke这个名字怎么获取到
             }
@@ -97,7 +97,7 @@ android {
         dev {//测试
             applicationId "com.smaboy.xiuxiu.dev"//不同的产品，不用的包名
             versionCode 1
-            versionName "1.0.2"//不同的产品，不同的版本名
+            versionName "v1.0.2"//不同的产品，不同的版本名
             manifestPlaceholders = [UMC: "dev"]//不同产品，不同的渠道号
         }
 

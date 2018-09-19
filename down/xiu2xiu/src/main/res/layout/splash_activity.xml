@@ -1,40 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/splash"
-        android:scaleType="fitXY"/>
+        android:src="@drawable/splash2"
+        android:scaleType="fitXY"
+        tools:ignore="ContentDescription" />
 
 
-    <TextView
-        android:id="@+id/tv_app_name"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="咻咻"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@id/tv_version_name"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginBottom="20dp"
+        android:orientation="vertical"
+        android:layout_gravity="bottom|center_horizontal"
+        android:gravity="center"
+        android:padding="10dp">
+        <TextView
+            android:id="@+id/tv_app_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textColor="@color/login_register_white"
+            android:textSize="30sp"
 
-        />
+            />
 
-    <TextView
-        android:id="@+id/tv_version_name"
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/spash_line"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/tv_version_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/login_register_white"
+            tools:text="v1.0.1"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_loading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="v1.0.1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginBottom="20dp"/>
+        android:src="@drawable/loading_progress"
+        android:layout_gravity="center"/>
 
 
 
 
-</android.support.constraint.ConstraintLayout>
+
+</FrameLayout>
