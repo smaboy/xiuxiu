@@ -29,4 +29,10 @@
         <item name="android:windowAnimationStyle">@style/fade</item>
     </style>
 
+
+    <style name="Dialog_Fullscreen">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@color/transparent_black_22</item>
+    </style>
 </resources>

@@ -149,6 +149,10 @@ MobSDK {
         }
 
     }
+
+    SMSSDK {
+        gui false
+    }
 }
 
 

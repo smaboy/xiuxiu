@@ -33,6 +33,7 @@ public class BaseActivity extends FragmentActivity {
         ActivityTaskManager.getInstance().addActivity(getClass().getSimpleName(), this);
 
 
+        //上下文
         context=this;
 
         //设置空的view
@@ -48,10 +49,4 @@ public class BaseActivity extends FragmentActivity {
 
     }
 
-    @Override
-    public void finish() {
-        super.finish();
-        //设置关闭动画
-//        this.overridePendingTransition(0,R.anim.push_bottom_out);
-    }
 }

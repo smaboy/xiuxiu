@@ -1,5 +1,6 @@
 package com.smaboy.pc120.xiuxiu.c.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -20,11 +21,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.smaboy.pc120.xiuxiu.R;
 import com.smaboy.pc120.xiuxiu.c.base.BaseActivity;
 import com.smaboy.pc120.xiuxiu.c.constant.UserInfoTips;
 import com.smaboy.pc120.xiuxiu.c.event.EventMessage;
+import com.smaboy.pc120.xiuxiu.c.util.AlertDialogUtils;
+import com.smaboy.pc120.xiuxiu.c.util.CheckUtils;
 import com.smaboy.pc120.xiuxiu.c.util.EventBusUtils;
 import com.smaboy.pc120.xiuxiu.c.util.FastBlurUtil;
 import com.smaboy.pc120.xiuxiu.c.util.LogUtil;
@@ -46,7 +50,8 @@ import cn.sharesdk.framework.Platform;
 import cn.sharesdk.framework.PlatformActionListener;
 import cn.sharesdk.sina.weibo.SinaWeibo;
 import cn.sharesdk.tencent.qq.QQ;
-import cn.sharesdk.wechat.friends.Wechat;
+import cn.smssdk.EventHandler;
+import cn.smssdk.SMSSDK;
 
 /**
  * 类名: LoginActivity_1_0
@@ -112,6 +117,7 @@ public class LoginActivity_1_0 extends BaseActivity {
     TextInputLayout tiplRgPwd2;
 
     private boolean isLogin = true;//标识当前是登录界面，还是注册界面
+    private EventHandler eh;//短信注册，注销回调接口
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -157,6 +163,111 @@ public class LoginActivity_1_0 extends BaseActivity {
 
             }
         });
+
+        lgEtPwd.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                tiplPwd.setErrorEnabled(false);
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+        rgEtPhone.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                tiplRgPhoneNo.setErrorEnabled(false);
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        rgEtCheckNo.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                tiplRgCheckNo.setErrorEnabled(false);
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        rgEtPwd1.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                tiplRgPwd1.setErrorEnabled(false);
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        rgEtPwd2.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                tiplRgPwd2.setErrorEnabled(false);
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+
+         //设置短信回调监听
+         eh = new EventHandler() {
+
+            @Override
+            public void afterEvent(int event, int result, Object data) {
+
+                if (result == SMSSDK.RESULT_COMPLETE) {
+                    //回调完成
+                    if (event == SMSSDK.EVENT_SUBMIT_VERIFICATION_CODE) {
+                        //提交验证码成功
+                    } else if (event == SMSSDK.EVENT_GET_VERIFICATION_CODE) {
+                        //获取验证码成功
+                    } else if (event == SMSSDK.EVENT_GET_SUPPORTED_COUNTRIES) {
+                        //返回支持发送验证码的国家列表
+                    }
+                } else {
+                    ((Throwable) data).printStackTrace();
+                }
+            }
+        };
+        SMSSDK.registerEventHandler(eh); //注册短信回调
     }
 
     /**
@@ -292,6 +403,12 @@ public class LoginActivity_1_0 extends BaseActivity {
 
         //EvntBus解注册
         EventBusUtils.unregister(this);
+
+        //短信回调监听注销
+        if(null!=eh) {
+            SMSSDK.unregisterEventHandler(eh);
+
+        }
     }
 
     //设置点击事件
@@ -371,6 +488,7 @@ public class LoginActivity_1_0 extends BaseActivity {
                 });
                 break;
             case R.id.rg_btn_send://发送
+                sendCode(context);
                 break;
             case R.id.rg_btn_register://注册
                 break;
@@ -395,6 +513,38 @@ public class LoginActivity_1_0 extends BaseActivity {
      */
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void doEvent(EventMessage messageEvent) {
+
+    }
+//    getVerificationCode(String country, String phone)
+//    getVerificationCode(String country, String phone, OnSendMessageHandler listener)
+//    getVerificationCode(String tempCode,String country, String phone , OnSendMessageHandler listener)
+//    请求获取短信验证码，在监听中返回
+//    submitVerificationCode(String country, String phone, String code)
+//    提交短信验证码，在监听中返回
+    public void sendCode(Context context) {
+
+        if(TextUtils.isEmpty(rgEtPhone.getText())) {
+            tiplRgPhoneNo.setErrorEnabled(true);
+            tiplRgPhoneNo.setError(getResources().getString(R.string.phone_num_no_empty));
+        }else {
+            if(CheckUtils.isMobileNO(rgEtPhone.getText().toString())) {
+                //手机号正确，请求验证码
+                AlertDialogUtils.showHintDialog(context, "确认手机号码", "我们将短信验证码发送到:" + rgEtPhone.getText().toString(),
+                        new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                Toast.makeText(LoginActivity_1_0.this, "确定", Toast.LENGTH_SHORT).show();
+
+                            }
+                        });
+
+
+            }else {
+                tiplRgPhoneNo.setErrorEnabled(true);
+                tiplRgPhoneNo.setError(getResources().getString(R.string.phone_num_no_legal));
+            }
+        }
+
 
     }
 

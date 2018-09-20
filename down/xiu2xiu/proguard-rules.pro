@@ -16,7 +16,8 @@
 #   public *;
 #}
 
-#MobSDK混淆设置
+#MobSDK混淆设置>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+#shareSDK
 -keep class cn.sharesdk.**{*;}
 -keep class com.sina.**{*;}
 -keep class **.R$* {*;}
@@ -27,3 +28,8 @@
 -dontwarn com.sina.**
 -dontwarn com.mob.**
 -dontwarn **.R$*
+
+#SMSSDK
+-keep class com.mob.**{*;}
+-keep class cn.smssdk.**{*;}
+-dontwarn com.mob.**
