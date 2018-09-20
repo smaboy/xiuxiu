@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         xmlns:tools="http://schemas.android.com/tools"
         android:orientation="vertical"
-        android:background="@drawable/retangle_c5_solid_white_shape"
+        android:background="@drawable/retangle_c10_solid_white_shape"
         android:layout_gravity="center"
         >
 
@@ -64,7 +64,7 @@
                 android:textSize="16sp"
                 android:textColor="@color/login_register_blue"
                 android:padding="15dp"
-                android:background="@drawable/btn_pressed_changed_shape"/>
+                android:background="@drawable/btn_bottomleft_pressed_changed_shape"/>
             <View
                 android:layout_width="1px"
                 android:layout_height="match_parent"
@@ -80,7 +80,7 @@
                 android:textSize="16sp"
                 android:textColor="@color/login_register_blue"
                 android:padding="15dp"
-                android:background="@drawable/btn_pressed_changed_shape"/>
+                android:background="@drawable/btn_bottomright_pressed_changed_shape"/>
 
 
         </LinearLayout>
