@@ -20,5 +20,8 @@
     <color name="login_register_blue">#2269D5</color>
     <color name="login_register_white">#FFFFFF</color>
     <color name="login_register_black">#000000</color>
-    <color name="transparent_black_22">#22000000</color>
+    <color name="transparent_black_22">#44000000</color>
+
+    <color name="xx_origin">#FF821B</color>
+    <color name="xx_yellow">#FFDA18</color>
 </resources>

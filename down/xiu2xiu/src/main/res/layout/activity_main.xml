@@ -51,37 +51,8 @@
             android:layout_height="1dp"
             android:background="#55000000"/>
 
-        <RadioGroup
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="3dp">
-
-            <RadioButton
-                android:id="@+id/talking"
-                style="@style/AppBottomStyle"
-                android:drawableTop="@drawable/drawable_select_talking"
-                android:checked="true"
-                android:text="@string/main_talk" />
-
-            <RadioButton
-                android:id="@+id/looking"
-                style="@style/AppBottomStyle"
-                android:drawableTop="@drawable/drawable_select_looking"
-                android:text="@string/main_look" />
-
-            <RadioButton
-                android:id="@+id/smallVD"
-                style="@style/AppBottomStyle"
-                android:drawableTop="@drawable/drawable_select_video"
-                android:text="@string/main_vd" />
-
-            <RadioButton
-                android:id="@+id/me"
-                style="@style/AppBottomStyle"
-                android:drawableTop="@drawable/drawable_select_me"
-                android:text="@string/main_me" />
-        </RadioGroup>
+        <!--底部菜单栏-->
+        <include layout="@layout/activity_bottom_toobar" />
 
 
     </LinearLayout>

@@ -2,12 +2,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/activity_title_height"
-    android:background="@color/xx_black_tobar"
+    xmlns:tools="http://schemas.android.com/tools"
     android:gravity="center_vertical"
     android:fitsSystemWindows="true"
     android:clipToPadding="true"
-    android:id="@+id/rl_toobar"
-    >
+    android:id="@+id/rl_toobar">
 
     <!--android:fitsSystemWindows="true"-->
     <!--android:clipToPadding="true"-->
@@ -19,16 +18,18 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:src="@drawable/man2"
-        />
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_centerVertical="true"/>
 
     <LinearLayout
         android:id="@+id/ll_mul_choice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:orientation="horizontal"
-        android:background="@drawable/retangle_c2_solid_translate_stroke_white_shape"
-        android:visibility="visible">
+        android:layout_centerInParent="true"
+        android:background="@drawable/retangle_c10_solid_white_shape"
+        android:visibility="gone">
 
         <TextView
             android:id="@+id/tab1"
@@ -37,10 +38,8 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:padding="8dp"
-            android:text="微信精选"
-            android:textColor="#fff"
+            tools:text="微信精选"
             android:textSize="16sp"
-            android:background="@drawable/left_round_retangle_black_shape"
             />
 
         <!--<TextView-->
@@ -53,7 +52,7 @@
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="笑话大全"
+            tools:text="笑话大全"
             android:padding="8dp"
             android:textSize="16sp"
             />
@@ -65,12 +64,12 @@
         android:id="@+id/title_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="text1"
-        android:textColor="#fff"
         android:textSize="@dimen/activity_title_text_size"
         android:gravity="center"
-        android:layout_centerHorizontal="true"
-        />
+        tools:text="我是标题"
+        android:layout_centerInParent="true"
+        tools:ignore="SpUsage"
+        android:visibility="gone"/>
 
 
 
