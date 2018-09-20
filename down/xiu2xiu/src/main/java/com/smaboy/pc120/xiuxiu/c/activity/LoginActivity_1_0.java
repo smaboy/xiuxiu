@@ -257,8 +257,11 @@ public class LoginActivity_1_0 extends BaseActivity {
                     //回调完成
                     if (event == SMSSDK.EVENT_SUBMIT_VERIFICATION_CODE) {
                         //提交验证码成功
+                        Toast.makeText(LoginActivity_1_0.this, "提交验证码成功", Toast.LENGTH_SHORT).show();
+                        go2Register();
                     } else if (event == SMSSDK.EVENT_GET_VERIFICATION_CODE) {
                         //获取验证码成功
+                        Toast.makeText(LoginActivity_1_0.this, "获取验证码成功", Toast.LENGTH_SHORT).show();
                     } else if (event == SMSSDK.EVENT_GET_SUPPORTED_COUNTRIES) {
                         //返回支持发送验证码的国家列表
                     }
@@ -491,12 +494,26 @@ public class LoginActivity_1_0 extends BaseActivity {
                 sendCode(context);
                 break;
             case R.id.rg_btn_register://注册
+//                go2Register();
+                //验证手机验证码是否正确
+                SMSSDK.submitVerificationCode("86",rgEtPhone.getText().toString(),rgEtCheckNo.getText().toString());
                 break;
             case R.id.switch_login_register://登录注册切换按钮
 
 
                 break;
         }
+    }
+
+    /**
+     * 注册
+     *
+     */
+    private void go2Register() {
+        //开始注册了
+        Toast.makeText(LoginActivity_1_0.this, "开始注册了", Toast.LENGTH_SHORT).show();
+
+
     }
 
     private void go2MainActivity() {
@@ -530,11 +547,10 @@ public class LoginActivity_1_0 extends BaseActivity {
             if(CheckUtils.isMobileNO(rgEtPhone.getText().toString())) {
                 //手机号正确，请求验证码
                 AlertDialogUtils.showHintDialog(context, "确认手机号码", "我们将短信验证码发送到:" + rgEtPhone.getText().toString(),
-                        new View.OnClickListener() {
+                        new AlertDialogUtils.OnSureClickListener() {
                             @Override
                             public void onClick(View view) {
-                                Toast.makeText(LoginActivity_1_0.this, "确定", Toast.LENGTH_SHORT).show();
-
+                                SMSSDK.getVerificationCode("86",rgEtPhone.getText().toString());
                             }
                         });
 

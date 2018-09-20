@@ -13,7 +13,7 @@
     <color name="xx_write_tobar">#ffffffff</color>
     <color name="xx_gray_tobar">#7F7F7F</color>
 
-    <color name="btn_white_normal">#f7f8f8</color>
+    <color name="btn_white_normal">#ffffff</color>
     <color name="btn_white_pressed">#b5b5b6</color>
 
     <!--2018-9-18颜色配置-->

@@ -63,7 +63,8 @@
                 android:gravity="center"
                 android:textSize="16sp"
                 android:textColor="@color/login_register_blue"
-                android:padding="15dp"/>
+                android:padding="15dp"
+                android:background="@drawable/btn_pressed_changed_shape"/>
             <View
                 android:layout_width="1px"
                 android:layout_height="match_parent"
@@ -78,7 +79,8 @@
                 android:gravity="center"
                 android:textSize="16sp"
                 android:textColor="@color/login_register_blue"
-                android:padding="15dp"/>
+                android:padding="15dp"
+                android:background="@drawable/btn_pressed_changed_shape"/>
 
 
         </LinearLayout>

@@ -22,6 +22,10 @@ import butterknife.ButterKnife;
  */
 public class AlertDialogUtils {
 
+    public interface OnSureClickListener{
+        void onClick(View view);
+    }
+
     /**
      * 该方法显示一个内容和，确定、取消 按钮的dialog
      *
@@ -30,7 +34,7 @@ public class AlertDialogUtils {
      * @param content 内容
      * @param sure 确定的点击回调
      */
-    public static void showHintDialog(Context context, String title, String content, View.OnClickListener sure) {
+    public static void showHintDialog(Context context, String title, String content, final OnSureClickListener sure) {
         final Dialog dialog = new Dialog(context, R.style.Dialog_Fullscreen);
         View view = LayoutInflater.from(context).inflate(R.layout.dialog_hint, null);
         dialog.setContentView(view);
@@ -44,13 +48,20 @@ public class AlertDialogUtils {
         //设置数据
         viewHolder.tvTitle.setText(title);
         viewHolder.tvContent.setText(content);
-        //设置点击确定的监听
-        viewHolder.tvSure.setOnClickListener(sure);
 
-        //设置点击外围和取消事件
+
+        // //设置点击的监听
         viewHolder.tvCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                dialog.cancel();
+            }
+        });
+
+        viewHolder.tvSure.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sure.onClick(view);
                 dialog.cancel();
             }
         });

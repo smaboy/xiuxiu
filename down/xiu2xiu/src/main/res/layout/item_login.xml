@@ -152,7 +152,8 @@
             android:textColor="@color/xx_write_tobar"
             android:gravity="center"
             android:drawablePadding="5dp"
-            android:textSize="14sp"/>
+            android:textSize="14sp"
+            android:background="@drawable/login_third_pressed_changed_shape"/>
 
         <TextView
             android:id="@+id/lg_weixin_login"
@@ -164,7 +165,8 @@
             android:textColor="@color/xx_write_tobar"
             android:gravity="center"
             android:drawablePadding="5dp"
-            android:textSize="14sp"/>
+            android:textSize="14sp"
+            android:background="@drawable/login_third_pressed_changed_shape"/>
 
         <TextView
             android:id="@+id/lg_weibo_login"
@@ -176,7 +178,8 @@
             android:textColor="@color/xx_write_tobar"
             android:gravity="center"
             android:drawablePadding="5dp"
-            android:textSize="14sp"/>
+            android:textSize="14sp"
+            android:background="@drawable/login_third_pressed_changed_shape"/>
 
 
     </LinearLayout>
