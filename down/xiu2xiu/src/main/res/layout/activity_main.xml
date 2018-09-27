@@ -25,15 +25,6 @@
         <!--标题栏-->
         <include layout="@layout/activity_title"/>
 
-        <!--使用fragment时一定要把那么属性设置上，不然会报错-->
-        <!--<fragment-->
-        <!--android:id="@+id/fragment"-->
-        <!--android:name="com.example.pc120.myapplication.c.fragment.TalkingFragment"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="0dp"-->
-        <!--android:layout_weight="1"-->
-        <!--/>-->
-
 
         <!--内容-->
         <FrameLayout
@@ -57,12 +48,6 @@
 
     </LinearLayout>
 
-    <!-- 侧边菜单-->
-    <!--<FrameLayout-->
-        <!--android:layout_width="200dp"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:background="@color/colorPrimary"-->
-        <!--android:layout_gravity="start"/>-->
 
     <!-- 侧边菜单-->
     <android.support.design.widget.NavigationView

@@ -45,6 +45,13 @@
     <item>时尚</item>
     </array>
 
+    <array name="mian_buttom_tabs">
+    <item>聊天</item>
+    <item>新闻</item>
+    <item>段子</item>
+    <item>我的</item>
+    </array>
+
     <array name="looking_tabs_type">
         <item>toutiao</item>
         <item>shehui</item>

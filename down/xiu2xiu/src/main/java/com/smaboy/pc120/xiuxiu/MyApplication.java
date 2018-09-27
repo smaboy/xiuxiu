@@ -16,18 +16,18 @@ public class MyApplication extends MultiDexApplication {
 
     @Override
     public void onCreate() {
-
+        super.onCreate();
 
         mContext = getBaseContext();
 
         //配置日志
-        LogUtil.allowE = false;
+        LogUtil.allowE = true;
         LogUtil.customTagPrefix = "TAG";
 
         //初始化Mob平台sdk
         MobSDK.init(mContext);
 
-        super.onCreate();
+
     }
 
     @Override

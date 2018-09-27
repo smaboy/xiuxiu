@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.smaboy.pc120.xiuxiu.R;
 import com.smaboy.pc120.xiuxiu.c.base.BaseFragment;
+import com.smaboy.pc120.xiuxiu.c.util.LogUtil;
 
 import java.util.ArrayList;
 
@@ -28,7 +29,8 @@ public class TalkingFragment extends BaseFragment {
 
     @Override
     public View setRootView(LayoutInflater inflater, ViewGroup container) {
-        return inflater.inflate(R.layout.fragment_me,container,false);
+        LogUtil.e("我被创建了");
+        return inflater.inflate(R.layout.fragment_talking,container,false);
     }
 
     @Override

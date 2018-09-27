@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 
 import com.smaboy.pc120.xiuxiu.R;
 import com.smaboy.pc120.xiuxiu.c.base.BaseFragment;
+import com.smaboy.pc120.xiuxiu.c.util.LogUtil;
 
 /**
  * Created by Smaboy on 2017/7/27,23:19
@@ -16,7 +17,8 @@ public class SmallVDFragment extends BaseFragment {
 
     @Override
     public View setRootView(LayoutInflater inflater, ViewGroup container) {
-        return inflater.inflate(R.layout.fragment_me,container,false);
+        LogUtil.e("我被创建了");
+        return inflater.inflate(R.layout.fragment_smallvd,container,false);
     }
 
     @Override
